@@ -31,7 +31,7 @@ public class Bow extends AbstractItem {
   public int getDamage(IUnit attacker, IUnit receiver){
     IEquipableItem receiver_item = receiver.EquippedItem();
     int damage = this.power;
-    if (receiver_item instanceof LightMagic){
+    if (receiver_item instanceof LightMagic || receiver_item instanceof DarkMagic || receiver_item instanceof SoulMagic){
       /*efectivo*/
       damage = damage + (damage/2);
     }

@@ -25,4 +25,10 @@ public class Staff extends AbstractItem {
   public Staff(final String name, final int power, final int minRange, final int maxRange) {
     super(name, power, minRange, maxRange);
   }
+
+  @Override
+  public int getHeal(IUnit healer, IUnit receiver){
+    int receiverhp = receiver.getCurrentHitPoints();
+    receiverhp = receiverhp - damage;
+  }
 }

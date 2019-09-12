@@ -34,16 +34,16 @@ public class Sword extends AbstractItem {
     if (receiver_item instanceof Axe) {
       /*efectivo*/
       damage = damage + (damage / 2);
-    } else if (receiver_item instanceof Spear || receiver_item instanceof LightMagic) {
+    } else if (receiver_item instanceof Spear || receiver_item instanceof LightMagic || receiver_item instanceof DarkMagic || receiver_item instanceof SoulMagic) {
       /*debil*/
       damage = damage - 20;
     }
-    int attackerhp = attacker.getCurrentHitPoints();
-    attackerhp = attackerhp - damage;
-    if (attackerhp < 0) {
-      attacker.currentHitPoints = 0
+    int receiverhp = receiver.getCurrentHitPoints();
+    receiverhp = receiverhp - damage;
+    if (receiverhp < 0) {
+      receiver.currentHitPoints = 0
     } else {
-      attacker.currentHitpoints = attackerhp
+      receiver.currentHitpoints = receiverhp
     }
   }
 

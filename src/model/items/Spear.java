@@ -35,7 +35,7 @@ public class Spear extends AbstractItem {
       /*efectivo*/
       damage = damage + (damage/2);
     }
-    else if (receiver_item instanceof Axe || receiver_item instanceof LightMagic){
+    else if (receiver_item instanceof Axe || receiver_item instanceof LightMagic || receiver_item instanceof DarkMagic || receiver_item instanceof SoulMagic){
       /*debil*/
       damage = damage - 20;
     }
