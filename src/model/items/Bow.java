@@ -26,4 +26,25 @@ public class Bow extends AbstractItem {
     this.minRange = Math.max(minRange, 2);
     this.maxRange = Math.max(maxRange, this.minRange);
   }
+
+  /*HACER TEST Y DOCUMENTAR*/
+  public int getDamage(IUnit attacker, IUnit receiver){
+    IEquipableItem receiver_item = receiver.EquippedItem();
+    int damage = this.power;
+    if (receiver_item instanceof LightMagic){
+      /*efectivo*/
+      damage = damage + (damage/2);
+    }
+
+    int attackerhp = attacker.getCurrentHitPoints();
+    attackerhp = attackerhp - damage;
+    if(attackerhp<0){
+      attacker.currentHitPoints = 0
+    }
+    else{
+      attacker.currentHitpoints = attackerhp
+    }
+
+    return damage;
+  }
 }

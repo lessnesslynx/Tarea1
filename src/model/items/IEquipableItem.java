@@ -45,4 +45,11 @@ public interface IEquipableItem {
    * @return the maximum range of the item
    */
   int getMaxRange();
+
+  /**
+   * @return the damage dealt by the item
+   */
+  int getDamage();
 }
+
+

@@ -66,3 +66,8 @@ public abstract class AbstractItem implements IEquipableItem {
     return maxRange;
   }
 }
+
+  @Override
+  public int getDamage(IUnit attacker, IUnit receiver){
+    return 0;
+  }
