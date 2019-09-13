@@ -43,14 +43,9 @@ public class Light extends AbstractItem {
             damage = damage - 20;
         }
 
-        int attackerhp = attacker.getCurrentHitPoints();
-        attackerhp = attackerhp - damage;
-        if(attackerhp<0){
-            attacker.setHitPoints(0);
-        }
-        else{
-            attacker.setHitPoints(attackerhp);
-        }
+        int receiverhp = receiver.getCurrentHitPoints();
+        receiverhp = receiverhp - damage;
+        receiver.setHitPoints(Math.max(receiverhp, 0));
 
         return damage;
     }
