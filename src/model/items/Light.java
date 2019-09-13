@@ -45,7 +45,12 @@ public class Light extends AbstractItem {
 
         int receiverhp = receiver.getCurrentHitPoints();
         receiverhp = receiverhp - damage;
-        receiver.setHitPoints(Math.max(receiverhp, 0));
+        if(receiverhp < 0){
+            receiver.setHitPoints(0);
+        }
+        else{
+            receiver.setHitPoints(receiverhp);
+        }
 
         return damage;
     }
