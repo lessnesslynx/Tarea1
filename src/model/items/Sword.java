@@ -1,5 +1,7 @@
 package model.items;
 
+import model.units.IUnit;
+
 /**
  * This class represents a sword type item.
  * <p>
@@ -29,23 +31,24 @@ public class Sword extends AbstractItem {
   /*HACER TEST Y DOCUMENTAR*/
   @Override
   public int getDamage(IUnit attacker, IUnit receiver) {
-    IEquipableItem receiver_item = receiver.EquippedItem();
-    int damage = this.power;
+    IEquipableItem receiver_item = receiver.getEquippedItem();
+    int damage = this.getPower();
     if (receiver_item instanceof Axe) {
       /*efectivo*/
       damage = damage + (damage / 2);
-    } else if (receiver_item instanceof Spear || receiver_item instanceof LightMagic || receiver_item instanceof DarkMagic || receiver_item instanceof SoulMagic) {
+    } else if (receiver_item instanceof Spear || receiver_item instanceof Light || receiver_item instanceof Dark || receiver_item instanceof Soul) {
       /*debil*/
       damage = damage - 20;
     }
     int receiverhp = receiver.getCurrentHitPoints();
     receiverhp = receiverhp - damage;
     if (receiverhp < 0) {
-      receiver.currentHitPoints = 0
+      receiver.setHitPoints(0);
     } else {
-      receiver.currentHitpoints = receiverhp
+      receiver.setHitPoints(receiverhp);
     }
+    return damage;
   }
 
-  return damage;
+
 }

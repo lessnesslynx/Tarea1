@@ -1,5 +1,7 @@
 package model.items;
 
+import model.units.IUnit;
+
 /**
  * This class represents a <i>Staff</i> type item.
  * <p>
@@ -26,9 +28,14 @@ public class Staff extends AbstractItem {
     super(name, power, minRange, maxRange);
   }
 
-  @Override
+
   public int getHeal(IUnit healer, IUnit receiver){
     int receiverhp = receiver.getCurrentHitPoints();
-    receiverhp = receiverhp - damage;
+    receiverhp = receiverhp + 10;
+
+    if(receiverhp > receiver.getMaxHitPoints()){
+      receiver.setHitPoints(receiver.getMaxHitPoints());
+    }
+    return 10;
   }
 }

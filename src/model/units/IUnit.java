@@ -23,17 +23,33 @@ public interface IUnit {
    */
   void equipItem(IEquipableItem item);
 
-  /**
+  /** Gets the max hit points of the unit
+   *
+  *  @return max hit points of the unit
+  */
+  int getMaxHitPoints();
+
+  /** Gets the current hit points of the unit
+   *
    * @return hit points of the unit
    */
   int getCurrentHitPoints();
 
-  /**
+  /** Sets the current hit points of the unit
+   *
+   * @param hp
+   *    hit points to be set
+   */
+  void setHitPoints(int hp);
+
+  /** Gets the list of items carried items by the unit
+   *
    * @return the items carried by this unit
    */
   List<IEquipableItem> getItems();
 
-  /**
+  /** Gets the currently equipped Item
+   *
    * @return the currently equipped item
    */
   IEquipableItem getEquippedItem();

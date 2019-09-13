@@ -1,5 +1,7 @@
 package model.items;
 
+import model.units.IUnit;
+
 /**
  * This class represents a <i>spear</i>.
  * <p>
@@ -29,25 +31,26 @@ public class Spear extends AbstractItem {
   /*HACER TEST Y DOCUMENTAR*/
   @Override
   public int getDamage(IUnit attacker, IUnit receiver){
-    IEquipableItem receiver_item = receiver.EquippedItem();
-    int damage = this.power;
+    IEquipableItem receiver_item = receiver.getEquippedItem();
+    int damage = this.getPower();
     if (receiver_item instanceof Sword){
       /*efectivo*/
       damage = damage + (damage/2);
     }
-    else if (receiver_item instanceof Axe || receiver_item instanceof LightMagic || receiver_item instanceof DarkMagic || receiver_item instanceof SoulMagic){
+    else if (receiver_item instanceof Axe || receiver_item instanceof Light || receiver_item instanceof Dark || receiver_item instanceof Soul){
       /*debil*/
       damage = damage - 20;
     }
     int attackerhp = attacker.getCurrentHitPoints();
     attackerhp = attackerhp - damage;
     if(attackerhp<0){
-      attacker.currentHitPoints = 0
+      attacker.setHitPoints(0);
     }
     else{
-      attacker.currentHitpoints = attackerhp
+      attacker.setHitPoints(attackerhp);
     }
+    return damage;
   }
 
-  return damage;
+
 }

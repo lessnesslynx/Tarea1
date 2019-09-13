@@ -1,5 +1,7 @@
 package model.items;
 
+import model.units.IUnit;
+
 /**
  * This class represents a Light Magic item.
  * <p>
@@ -9,7 +11,7 @@ package model.items;
  * @since 1.1
  */
 
-public class Axe extends AbstractItem {
+public class Light extends AbstractItem {
 
     /**
      * Creates a new Light Magic item
@@ -19,13 +21,13 @@ public class Axe extends AbstractItem {
      * @param minRange the minimum range of the Light Magic item
      * @param maxRange the maximum range of the Light Magic item
      */
-    public LightMagic(final String name, final int power, final int minRange, final int maxRange) {
+    public Light(final String name, final int power, final int minRange, final int maxRange) {
         super(name, power, minRange, maxRange);
     }
 
     public int getDamage(IUnit attacker, IUnit receiver){
-        IEquipableItem receiver_item = receiver.EquippedItem();
-        int damage = this.power;
+        IEquipableItem receiver_item = receiver.getEquippedItem();
+        int damage = this.getPower();
         if (receiver_item instanceof Soul || receiver_item instanceof Axe || receiver_item instanceof Sword || receiver_item instanceof Spear || receiver_item instanceof Bow){
             /*efectivo*/
             damage = damage + (damage/2);
@@ -38,10 +40,10 @@ public class Axe extends AbstractItem {
         int attackerhp = attacker.getCurrentHitPoints();
         attackerhp = attackerhp - damage;
         if(attackerhp<0){
-            attacker.currentHitPoints = 0
+            attacker.setHitPoints(0);
         }
         else{
-            attacker.currentHitpoints = attackerhp
+            attacker.setHitPoints(attackerhp);
         }
 
         return damage;

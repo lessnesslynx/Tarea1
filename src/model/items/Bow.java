@@ -1,8 +1,10 @@
 package model.items;
 
+import model.units.IUnit;
+
 /**
  * @author Ignacio Slater Muñoz
- * @since
+ * @since 1.0
  */
 public class Bow extends AbstractItem {
 
@@ -28,10 +30,11 @@ public class Bow extends AbstractItem {
   }
 
   /*HACER TEST Y DOCUMENTAR*/
+  @Override
   public int getDamage(IUnit attacker, IUnit receiver){
-    IEquipableItem receiver_item = receiver.EquippedItem();
-    int damage = this.power;
-    if (receiver_item instanceof LightMagic || receiver_item instanceof DarkMagic || receiver_item instanceof SoulMagic){
+    IEquipableItem receiver_item = receiver.getEquippedItem();
+    int damage = this.getPower();
+    if (receiver_item instanceof Light || receiver_item instanceof Dark || receiver_item instanceof Soul){
       /*efectivo*/
       damage = damage + (damage/2);
     }
@@ -39,12 +42,14 @@ public class Bow extends AbstractItem {
     int attackerhp = attacker.getCurrentHitPoints();
     attackerhp = attackerhp - damage;
     if(attackerhp<0){
-      attacker.currentHitPoints = 0
+      attacker.setHitPoints(0);
     }
     else{
-      attacker.currentHitpoints = attackerhp
+      attacker.setHitPoints(attackerhp);
     }
 
     return damage;
   }
+
+
 }

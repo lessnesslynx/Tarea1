@@ -49,7 +49,7 @@ public interface IEquipableItem {
   /**
    * @return the damage dealt by the item
    */
-  int getDamage();
+  int getDamage(IUnit attacker, IUnit receiver);
 }
 
 
