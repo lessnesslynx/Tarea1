@@ -28,7 +28,12 @@ public class Axe extends AbstractItem {
     super(name, power, minRange, maxRange);
   }
 
-  /*HACER TEST Y DOCUMENTAR*/
+  /**
+   *
+   * @param attacker The attacker unit
+   * @param receiver The receiver unit
+   * @return damage dealt
+   */
   @Override
   public int getDamage(IUnit attacker, IUnit receiver){
     IEquipableItem receiver_item = receiver.getEquippedItem();

@@ -25,6 +25,12 @@ public class Dark extends AbstractItem {
         super(name, power, minRange, maxRange);
     }
 
+    /**
+     *
+     * @param attacker The attacker unit
+     * @param receiver The receiver unit
+     * @return damage dealt
+     */
     public int getDamage(IUnit attacker, IUnit receiver){
         IEquipableItem receiver_item = receiver.getEquippedItem();
         int damage = this.getPower();

@@ -28,7 +28,12 @@ public class Spear extends AbstractItem {
     super(name, power, minRange, maxRange);
   }
 
-  /*HACER TEST Y DOCUMENTAR*/
+  /**
+   *
+   * @param attacker The attacker unit
+   * @param receiver The receiver unit
+   * @return damage dealt
+   */
   @Override
   public int getDamage(IUnit attacker, IUnit receiver){
     IEquipableItem receiver_item = receiver.getEquippedItem();
@@ -41,13 +46,13 @@ public class Spear extends AbstractItem {
       /*debil*/
       damage = damage - 20;
     }
-    int attackerhp = attacker.getCurrentHitPoints();
-    attackerhp = attackerhp - damage;
-    if(attackerhp<0){
-      attacker.setHitPoints(0);
+    int receiverhp = receiver.getCurrentHitPoints();
+    receiverhp = receiverhp - damage;
+    if(receiverhp<0){
+      receiver.setHitPoints(0);
     }
     else{
-      attacker.setHitPoints(attackerhp);
+      receiver.setHitPoints(receiverhp);
     }
     return damage;
   }

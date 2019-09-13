@@ -31,12 +31,18 @@ public abstract class AbstractItem implements IEquipableItem {
     this.maxRange = Math.max(maxRange, this.minRange);
   }
 
+  /**
+   * Equips item to unit
+   *
+   * @param unit The unit who will equip the item
+   */
   @Override
   public void equipTo(final IUnit unit) {
     unit.setEquippedItem(this);
     owner = unit;
   }
 
+  //Region properties
   @Override
   public IUnit getOwner() {
     return owner;
@@ -61,8 +67,14 @@ public abstract class AbstractItem implements IEquipableItem {
   public int getMaxRange() {
     return maxRange;
   }
+  //endregion
 
-
+  /**
+   *
+   * @param attacker The attacker unit
+   * @param receiver The receiver unit
+   * @return damage dealt (0 for generic items)
+   */
   @Override
   public int getDamage(IUnit attacker, IUnit receiver) {
     return 0;

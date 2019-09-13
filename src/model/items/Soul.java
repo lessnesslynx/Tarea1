@@ -25,6 +25,12 @@ public class Soul extends AbstractItem {
         super(name, power, minRange, maxRange);
     }
 
+    /**
+     *
+     * @param attacker The attacker unit
+     * @param receiver The receiver unit
+     * @return damage dealt
+     */
     public int getDamage(IUnit attacker, IUnit receiver){
         IEquipableItem receiver_item = receiver.getEquippedItem();
         int damage = this.getPower();
@@ -37,13 +43,13 @@ public class Soul extends AbstractItem {
             damage = damage - 20;
         }
 
-        int attackerhp = attacker.getCurrentHitPoints();
-        attackerhp = attackerhp - damage;
-        if(attackerhp<0){
-            attacker.setHitPoints(0);
+        int receiverhp = receiver.getCurrentHitPoints();
+        receiverhp = receiverhp - damage;
+        if(receiverhp<0){
+            receiver.setHitPoints(0);
         }
         else{
-            attacker.setHitPoints(attackerhp);
+            receiver.setHitPoints(receiverhp);
         }
 
         return damage;
