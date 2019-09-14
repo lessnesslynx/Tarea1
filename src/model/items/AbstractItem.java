@@ -119,5 +119,9 @@ public abstract class AbstractItem implements IEquipableItem {
     receiver.getNormalDamage(baseDamage);
   }
 
+  public void doCounter(IUnit target){
+
+  }
+
 }
 

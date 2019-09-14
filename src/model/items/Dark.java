@@ -57,8 +57,12 @@ public class Dark extends AbstractItem {
     public void doCombat(IUnit receiver){
         dealDarkDamage(receiver.getEquippedItem(),receiver);
         if(receiver.getCurrentHitPoints() > 0){
-            //do counterattack
+            receiver.counterattack(receiver,this, this.getOwner());
         }
+    }
+
+    public void doCounter(IUnit target){
+        dealDarkDamage(target.getEquippedItem(),target);
     }
 
 }

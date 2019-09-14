@@ -1,6 +1,7 @@
 package model.units;
 
 import java.util.List;
+
 import model.items.IEquipableItem;
 import model.map.Location;
 
@@ -105,4 +106,6 @@ public interface IUnit {
    * @param power Power of the staff
    */
   void getHeal(int power);
+
+  void counterattack(IUnit receiver, IEquipableItem item, IUnit attacker);
 }

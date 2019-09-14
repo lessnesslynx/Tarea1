@@ -145,4 +145,10 @@ public abstract class AbstractUnit implements IUnit {
       this.currentHitPoints = this.maxHitPoints;
     }
   }
+
+  public void counterattack(IUnit receiver, IEquipableItem item, IUnit attacker){
+    if(attacker.getLocation().distanceTo(receiver.getLocation())>item.getMinRange()&&attacker.getLocation().distanceTo(receiver.getLocation())>item.getMaxRange()) {
+      item.doCounter(attacker);
+    }
+  }
 }

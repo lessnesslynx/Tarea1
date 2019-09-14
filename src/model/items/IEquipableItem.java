@@ -87,6 +87,8 @@ public interface IEquipableItem {
    * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
    */
   void getLightDamage(IUnit receiver, int baseDamage);
+
+  void doCounter(IUnit target);
 }
 
 
