@@ -48,20 +48,51 @@ public interface IEquipableItem {
 
 
   /** Makes a unit receive Sword damage
-   *
-   * @param attackerItem The item of the unit who will receive damage
+   *  @param receiverItem The item of the unit who will receive damage
    * @param receiver The unit who will receive damage
+   * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
    */
-  void getSwordDamage(IEquipableItem attackerItem, IUnit receiver);
+  void getSwordDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage);
 
   /** Makes a unit receive Spear damage
    *
-   * @param attackerItem The item of the unit who will receive damage
+   * @param receiverItem The item of the unit who will receive damage
    * @param receiver The unit who will receive damage
+   * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
    */
-  void getSpearDamage(IEquipableItem attackerItem, IUnit receiver);
+  void getSpearDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage);
 
-  void getAxeDamage(IEquipableItem receiverItem, IUnit receiver);
+  /** Makes a unit receive Axe damage
+   *
+   * @param receiverItem The item of the unit who will receive damage
+   * @param receiver The unit who will receive damage
+   * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
+   */
+  void getAxeDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage);
+
+  /** Makes a unit receive Soul damage
+   *
+   * @param receiverItem The item of the unit who will receive damage
+   * @param receiver The unit who will receive damage
+   * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
+   */
+  void getSoulDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage);
+
+  /** Makes a unit receive Dark damage
+   *
+   * @param receiverItem The item of the unit who will receive damage
+   * @param receiver The unit who will receive damage
+   * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
+   */
+  void getDarkDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage);
+
+  /** Makes a unit receive Light damage
+   *
+   * @param receiverItem The item of the unit who will receive damage
+   * @param receiver The unit who will receive damage
+   * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
+   */
+  void getLightDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage);
 }
 
 

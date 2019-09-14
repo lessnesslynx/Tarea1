@@ -105,7 +105,7 @@ public class Field {
    *
    * @return true if the map is connected, false otherwise.
    */
-  public boolean isConnected() {
+  boolean isConnected() {
     Set<Location> visitedNodes = new HashSet<>();
     Queue<Location> toVisit = new LinkedList<>();
     toVisit.add(map.entrySet().iterator().next().getValue());
@@ -126,9 +126,12 @@ public class Field {
   }
 
   /**
-   * Removes a connection from two locations of the field
+   *  Removes a connection from two locations of the field
+   *
+   * @param cell1 One of the cells to remove connection from
+   * @param cell2 Another one of the cells to remove connection from
    */
-  public void removeConnection(final Location cell1, final Location cell2) {
+  void removeConnection(final Location cell1, final Location cell2) {
     if (cell1.getNeighbours().size() > 1 && cell2.getNeighbours().size() > 1) {
       cell1.removeNeighbour(cell2);
     }
@@ -136,8 +139,11 @@ public class Field {
 
   /**
    * Checks if two cells of the map are connected
+   *
+   * @param cell1 One of the cells to check connection
+   * @param cell2 Another one of the cells to check connection
    */
-  public boolean checkConnection(final Location cell1, final Location cell2) {
+  boolean checkConnection(final Location cell1, final Location cell2) {
     return cell1.isNeighbour(cell2);
   }
 }

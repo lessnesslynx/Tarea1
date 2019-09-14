@@ -29,32 +29,35 @@ public class Bow extends AbstractItem {
     this.maxRange = Math.max(maxRange, this.minRange);
   }
 
-  /**
+  /** Makes the unit receive Soul damage depending on their item, overrides parent's method to make damage resistant
    *
-   * @param attacker The attacker unit
-   * @param receiver The receiver unit
-   * @return damage dealt
+   * @param receiverItem The equipped item of the user who will receive damage
+   * @param receiver The unit who will receive damage
    */
   @Override
-  public int getDamage(IUnit attacker, IUnit receiver){
-    IEquipableItem receiver_item = receiver.getEquippedItem();
-    int damage = this.getPower();
-    if (receiver_item instanceof Light || receiver_item instanceof Dark || receiver_item instanceof Soul){
-      /*efectivo*/
-      damage = damage + (damage/2);
-    }
-
-    int attackerhp = attacker.getCurrentHitPoints();
-    attackerhp = attackerhp - damage;
-    if(attackerhp<0){
-      attacker.setHitPoints(0);
-    }
-    else{
-      attacker.setHitPoints(attackerhp);
-    }
-
-    return damage;
+  public void getSoulDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+    receiver.getEffectiveDamage(baseDamage);
   }
 
+  /** Makes the unit receive Dark damage depending on their item, overrides parent's method to make damage effective
+   *
+   * @param receiverItem The equipped item of the user who will receive damage
+   * @param receiver The unit who will receive damage
+   * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
+   */
+  @Override
+  public void getDarkDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+    receiver.getEffectiveDamage(baseDamage);
+  }
 
+  /** Makes the unit receive Light damage depending on the item, overrides parent's method to make damage effective
+   *
+   * @param receiverItem The equipped item of the user who will receive damage
+   * @param receiver The unit who will receive damage
+   * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
+   */
+  @Override
+  public void getLightDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+    receiver.getEffectiveDamage(baseDamage);
+  }
 }

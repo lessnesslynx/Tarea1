@@ -26,7 +26,7 @@ class AxeTest extends AbstractTestItem {
   }
 
   /**
-   * Sets up an item with wrong ranges setted.
+   * Sets up an item with wrong ranges set.
    */
   @Override
   public void setWrongRangeItem() {
@@ -38,7 +38,7 @@ class AxeTest extends AbstractTestItem {
    */
   @Override
   public void setTestUnit() {
-    fighter = new Fighter(10, 5, new Location(0, 0));
+    fighter = new Fighter(10, 10, 5, new Location(0, 0));
   }
 
   @Override

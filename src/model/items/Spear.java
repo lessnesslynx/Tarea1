@@ -35,30 +35,61 @@ public class Spear extends AbstractItem {
    * @param receiver A unit who will receive damage
    */
   public void dealSpearDamage(IEquipableItem receiverItem, IUnit receiver){
-    receiverItem.getSpearDamage(receiverItem,receiver);
+    int baseDamage = this.getPower();
+    receiverItem.getSpearDamage(receiverItem,receiver,baseDamage);
   }
 
   /** Makes the unit receive Axe damage depending on their item, overrides parent's method to make damage effective
    *
    * @param receiverItem The equipped item of the user who will receive damage
    * @param receiver The unit who will receive damage
+   * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
    */
   @Override
-  public void getAxeDamage(IEquipableItem receiverItem, IUnit receiver){
-    int baseDamage = receiverItem.getPower();
+  public void getAxeDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
     receiver.getEffectiveDamage(baseDamage);
   }
 
   /** Makes the unit receive Sword damage depending on their item, overrides parent's method to make damage resistant
-   *
    * @param receiverItem The equipped item of the user who will receive damage
    * @param receiver The unit who will receive damage
+   * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
    */
   @Override
-  public void getSwordDamage(IEquipableItem receiverItem, IUnit receiver){
-    int baseDamage = receiverItem.getPower();
+  public void getSwordDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
     receiver.getResistantDamage(baseDamage);
   }
 
+  /** Makes the unit receive Soul damage depending on their item, overrides parent's method to make damage resistant
+   *
+   * @param receiverItem The equipped item of the user who will receive damage
+   * @param receiver The unit who will receive damage
+   * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
+   */
+  @Override
+  public void getSoulDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+    receiver.getEffectiveDamage(baseDamage);
+  }
 
+  /** Makes the unit receive Dark damage depending on their item, overrides parent's method to make damage resistant
+   *
+   * @param receiverItem The equipped item of the user who will receive damage
+   * @param receiver The unit who will receive damage
+   * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
+   */
+  @Override
+  public void getDarkDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+    receiver.getEffectiveDamage(baseDamage);
+  }
+
+  /** Makes the unit receive Light damage depending on the item, overrides parent's method to make damage effective
+   *
+   * @param receiverItem The equipped item of the user who will receive damage
+   * @param receiver The unit who will receive damage
+   * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
+   */
+  @Override
+  public void getLightDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+    receiver.getEffectiveDamage(baseDamage);
+  }
 }

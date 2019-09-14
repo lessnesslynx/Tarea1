@@ -32,7 +32,7 @@ public class BowTest extends AbstractTestItem {
   }
 
   /**
-   * Sets up an item with wrong ranges setted.
+   * Sets up an item with wrong ranges set.
    */
   @Override
   public void setWrongRangeItem() {
@@ -44,7 +44,7 @@ public class BowTest extends AbstractTestItem {
    */
   @Override
   public void setTestUnit() {
-    archer = new Archer(10, 5, new Location(0, 0));
+    archer = new Archer(10, 10, 5, new Location(0, 0));
   }
 
   /**

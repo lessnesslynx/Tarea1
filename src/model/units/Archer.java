@@ -26,9 +26,9 @@ public class Archer extends AbstractUnit {
    * @param items
    *     the items carried by this unit
    */
-  public Archer(final int hitPoints, final int movement, final Location position,
+  public Archer(int hitPoints,final int maxHitPoints, final int movement, final Location position,
       final IEquipableItem... items) {
-    super(hitPoints, movement, position, 3, items);
+    super(hitPoints, maxHitPoints, movement, position, 3, items);
   }
 
   /**

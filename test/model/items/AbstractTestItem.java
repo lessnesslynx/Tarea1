@@ -16,16 +16,16 @@ import org.junit.jupiter.api.Test;
  */
 public abstract class AbstractTestItem {
 
-  protected String expectedName;
-  protected int expectedPower;
-  protected short expectedMinRange;
-  protected short expectedMaxRange;
+  String expectedName;
+  int expectedPower;
+  short expectedMinRange;
+  short expectedMaxRange;
 
   /**
    * Sets up the items to be tested
    */
   @BeforeEach
-  public void setUp() {
+  void setUp() {
     setTestItem();
     setWrongRangeItem();
     setTestUnit();
@@ -37,7 +37,7 @@ public abstract class AbstractTestItem {
   public abstract void setTestItem();
 
   /**
-   * Sets up an item with wrong ranges setted.
+   * Sets up an item with wrong ranges set.
    */
   public abstract void setWrongRangeItem();
 
@@ -61,7 +61,7 @@ public abstract class AbstractTestItem {
    * Tests that the constructor for the tested item works properly
    */
   @Test
-  public void constructorTest() {
+  void constructorTest() {
     assertEquals(getExpectedName(), getTestItem().getName());
     assertEquals(getExpectedBasePower(), getTestItem().getPower());
     assertEquals(getExpectedMinRange(), getTestItem().getMinRange());
@@ -71,7 +71,7 @@ public abstract class AbstractTestItem {
   /**
    * @return the expected name of the item
    */
-  public String getExpectedName() {
+  String getExpectedName() {
     return expectedName;
   }
 
@@ -83,21 +83,21 @@ public abstract class AbstractTestItem {
   /**
    * @return the expected power of the Item
    */
-  public int getExpectedBasePower() {
+  int getExpectedBasePower() {
     return expectedPower;
   }
 
   /**
    * @return the expected minimum range of the item
    */
-  public int getExpectedMinRange() {
+  int getExpectedMinRange() {
     return expectedMinRange;
   }
 
   /**
    * @return the expected maximum range of the item
    */
-  public int getExpectedMaxRange() {
+  int getExpectedMaxRange() {
     return expectedMaxRange;
   }
 
@@ -105,7 +105,7 @@ public abstract class AbstractTestItem {
    * Checks that the Item can be correctly equipped to a unit
    */
   @Test
-  public void equippedToTest() {
+  void equippedToTest() {
     assertNull(getTestItem().getOwner());
     IUnit unit = getTestUnit();
     getTestItem().equipTo(unit);

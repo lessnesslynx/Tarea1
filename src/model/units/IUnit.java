@@ -82,9 +82,27 @@ public interface IUnit {
    */
   void moveTo(Location targetLocation);
 
+  /** Makes the unit get Normal damage
+   *
+   * @param baseDamage Base damage
+   */
   void getNormalDamage(int baseDamage);
 
+  /** Makes the unit get Resistant (-20) damage
+   *
+   * @param baseDamage Base damage
+   */
   void getResistantDamage(int baseDamage);
 
+  /** Makes the unit get Effective (x1.5) damage
+   *
+   * @param baseDamage  Base damage
+   */
   void getEffectiveDamage(int baseDamage);
+
+  /** Makes the unit get healed
+   *
+   * @param power Power of the staff
+   */
+  void getHeal(int power);
 }

@@ -110,6 +110,10 @@ public abstract class AbstractUnit implements IUnit {
     }
   }
 
+  /** Makes the unit receive resistant damage (-20) based on the base damage
+   *
+   * @param baseDamage Base damage
+   */
   @Override
   public void getResistantDamage(int baseDamage){
     baseDamage = baseDamage - 20;
@@ -118,6 +122,10 @@ public abstract class AbstractUnit implements IUnit {
     if(currentHitPoints<0){currentHitPoints = 0;}
   }
 
+  /** Makes the unit receive effective (x1.5) damage based on the base damage
+   *
+   * @param baseDamage Base damage
+   */
   @Override
   public void getEffectiveDamage(int baseDamage){
     baseDamage = baseDamage + (baseDamage/2);
@@ -127,4 +135,14 @@ public abstract class AbstractUnit implements IUnit {
     }
   }
 
+  /** Makes the unit get healed
+   *
+   * @param power Power of the staff
+   */
+  public void getHeal(int power){
+    this.currentHitPoints = this.currentHitPoints + power;
+    if(this.currentHitPoints > this.maxHitPoints){
+      this.currentHitPoints = this.maxHitPoints;
+    }
+  }
 }

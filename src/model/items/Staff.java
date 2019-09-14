@@ -28,19 +28,8 @@ public class Staff extends AbstractItem {
     super(name, power, minRange, maxRange);
   }
 
-  /**
-   *
-   * @param healer The healing unit
-   * @param receiver The receiven unit (the one who gets healed)
-   * @return heal amount
-   */
-  public int getHeal(IUnit healer, IUnit receiver){
-    int receiverhp = receiver.getCurrentHitPoints();
-    receiverhp = receiverhp + 10;
-
-    if(receiverhp > receiver.getMaxHitPoints()){
-      receiver.setHitPoints(receiver.getMaxHitPoints());
-    }
-    return 10;
+  public void performHeal(IUnit receiver){
+    int power = this.getPower();
+    receiver.getHeal(power);
   }
 }
