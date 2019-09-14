@@ -24,7 +24,7 @@ public abstract class AbstractUnit implements IUnit {
   private final int maxHitPoints;
   private int currentHitPoints;
   private final int movement;
-  protected IEquipableItem equippedItem;
+  IEquipableItem equippedItem;
   private Location location;
 
   /**
@@ -39,8 +39,8 @@ public abstract class AbstractUnit implements IUnit {
    * @param maxItems
    *     maximum amount of items this unit can carry
    */
-  protected AbstractUnit(final int maxHitPoints, int hitPoints, final int movement,
-      final Location location, final int maxItems, final IEquipableItem... items) {
+  AbstractUnit(final int maxHitPoints, int hitPoints, final int movement,
+               final Location location, final int maxItems, final IEquipableItem... items) {
     this.maxHitPoints = hitPoints;
     this.currentHitPoints = hitPoints;
     this.movement = movement;
@@ -91,6 +91,8 @@ public abstract class AbstractUnit implements IUnit {
     return movement;
   }
 
+
+
   @Override
   public void moveTo(final Location targetLocation) {
     if (getLocation().distanceTo(targetLocation) <= getMovement()
@@ -98,4 +100,31 @@ public abstract class AbstractUnit implements IUnit {
       setLocation(targetLocation);
     }
   }
+
+  @Override
+  public void getNormalDamage(int baseDamage){
+
+    this.currentHitPoints = this.currentHitPoints - baseDamage;
+    if(this.currentHitPoints < 0) {
+      this.currentHitPoints = 0;
+    }
+  }
+
+  @Override
+  public void getResistantDamage(int baseDamage){
+    baseDamage = baseDamage - 20;
+    if(baseDamage<0){baseDamage = 0;}
+    this.currentHitPoints = this.currentHitPoints - baseDamage;
+    if(currentHitPoints<0){currentHitPoints = 0;}
+  }
+
+  @Override
+  public void getEffectiveDamage(int baseDamage){
+    baseDamage = baseDamage + (baseDamage/2);
+    this.currentHitPoints = this.currentHitPoints - baseDamage;
+    if(this.currentHitPoints < 0) {
+      this.currentHitPoints = 0;
+    }
+  }
+
 }

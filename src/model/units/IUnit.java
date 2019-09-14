@@ -81,4 +81,10 @@ public interface IUnit {
    * If the other location is out of this unit's movement range, the unit doesn't move.
    */
   void moveTo(Location targetLocation);
+
+  void getNormalDamage(int baseDamage);
+
+  void getResistantDamage(int baseDamage);
+
+  void getEffectiveDamage(int baseDamage);
 }

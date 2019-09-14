@@ -46,10 +46,22 @@ public interface IEquipableItem {
    */
   int getMaxRange();
 
-  /**
-   * @return the damage dealt by the item
+
+  /** Makes a unit receive Sword damage
+   *
+   * @param attackerItem The item of the unit who will receive damage
+   * @param receiver The unit who will receive damage
    */
-  int getDamage(IUnit attacker, IUnit receiver);
+  void getSwordDamage(IEquipableItem attackerItem, IUnit receiver);
+
+  /** Makes a unit receive Spear damage
+   *
+   * @param attackerItem The item of the unit who will receive damage
+   * @param receiver The unit who will receive damage
+   */
+  void getSpearDamage(IEquipableItem attackerItem, IUnit receiver);
+
+  void getAxeDamage(IEquipableItem receiverItem, IUnit receiver);
 }
 
 

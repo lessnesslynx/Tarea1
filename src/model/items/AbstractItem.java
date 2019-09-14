@@ -12,8 +12,8 @@ public abstract class AbstractItem implements IEquipableItem {
 
   private final String name;
   private final int power;
-  protected int maxRange;
-  protected int minRange;
+  int maxRange;
+  int minRange;
   private IUnit owner;
 
   /**
@@ -24,7 +24,7 @@ public abstract class AbstractItem implements IEquipableItem {
    * @param minRange the minimum range of the item
    * @param maxRange the maximum range of the item
    */
-  public AbstractItem(final String name, final int power, final int minRange, final int maxRange) {
+  AbstractItem(final String name, final int power, final int minRange, final int maxRange) {
     this.name = name;
     this.power = power;
     this.minRange = Math.max(minRange, 1);
@@ -69,16 +69,37 @@ public abstract class AbstractItem implements IEquipableItem {
   }
   //endregion
 
-  /**
+  /** Makes the unit receive Sword damage depending on their item
    *
-   * @param attacker The attacker unit
-   * @param receiver The receiver unit
-   * @return damage dealt (0 for generic items)
+   * @param receiverItem The equipped item of the user who will receive damage
+   * @param receiver The unit who will receive damage
    */
-  @Override
-  public int getDamage(IUnit attacker, IUnit receiver) {
-    return 0;
+  public void getSwordDamage(IEquipableItem receiverItem, IUnit receiver){
+    int baseDamage = receiverItem.getPower();
+    receiver.getNormalDamage(baseDamage);
   }
+
+  /** Makes the unit receive Axe damage depending on their item
+   *
+   * @param receiverItem The equipped item of the user who will receive damage
+   * @param receiver The unit who will receive damage
+   */
+  public void getAxeDamage(IEquipableItem receiverItem, IUnit receiver){
+    int baseDamage = receiverItem.getPower();
+    receiver.getNormalDamage(baseDamage);
+  }
+
+  /** Makes the unit receive Spear damage depending on their item
+   *
+   * @param receiverItem The equipped item of the user who will receive damage
+   * @param receiver The unit who will receive damage
+   */
+  public void getSpearDamage(IEquipableItem receiverItem, IUnit receiver){
+    int baseDamage = receiverItem.getPower();
+    receiver.getNormalDamage(baseDamage);
+  }
+
+
 
 }
 

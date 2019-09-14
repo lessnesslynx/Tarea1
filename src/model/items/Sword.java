@@ -28,31 +28,37 @@ public class Sword extends AbstractItem {
     super(name, power, minRange, maxRange);
   }
 
-  /**
+    /** Makes this weapon deal Sword damage to another unit
+     *
+     * @param receiverItem The equipped item of the unit who will receive damage
+     * @param receiver A unit who will receive damage
+     */
+  public void dealSwordDamage(IEquipableItem receiverItem, IUnit receiver){
+      receiverItem.getSwordDamage(receiverItem,receiver);
+  }
+
+
+
+  /** Makes the unit receive Axe damage depending on their item, overrides parent's method to make damage resistant
    *
-   * @param attacker The attacker unit
-   * @param receiver The receiver unit
-   * @return damage dealt
+   * @param receiverItem The equipped item of the user who will receive damage
+   * @param receiver The unit who will receive damage
    */
   @Override
-  public int getDamage(IUnit attacker, IUnit receiver) {
-    IEquipableItem receiver_item = receiver.getEquippedItem();
-    int damage = this.getPower();
-    if (receiver_item instanceof Axe) {
-      /*efectivo*/
-      damage = damage + (damage / 2);
-    } else if (receiver_item instanceof Spear || receiver_item instanceof Light || receiver_item instanceof Dark || receiver_item instanceof Soul) {
-      /*debil*/
-      damage = damage - 20;
-    }
-    int receiverhp = receiver.getCurrentHitPoints();
-    receiverhp = receiverhp - damage;
-    if (receiverhp < 0) {
-      receiver.setHitPoints(0);
-    } else {
-      receiver.setHitPoints(receiverhp);
-    }
-    return damage;
+  public void getAxeDamage(IEquipableItem receiverItem, IUnit receiver){
+      int baseDamage = receiverItem.getPower();
+      receiver.getResistantDamage(baseDamage);
+  }
+
+  /** Makes the unit receive Spear damage depending on their item, overrides parent's method to make damage effective
+   *
+   * @param receiverItem The equipped item of the user who will receive damage
+   * @param receiver The unit who will receive damage
+   */
+  @Override
+  public void getSpearDamage(IEquipableItem receiverItem, IUnit receiver){
+      int baseDamage = receiverItem.getPower();
+      receiver.getEffectiveDamage(baseDamage);
   }
 
 

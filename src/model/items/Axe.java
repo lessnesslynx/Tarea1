@@ -28,34 +28,35 @@ public class Axe extends AbstractItem {
     super(name, power, minRange, maxRange);
   }
 
-  /**
+  /** Makes the item deal Axe damage to a unit
    *
-   * @param attacker The attacker unit
-   * @param receiver The receiver unit
-   * @return damage dealt
+   * @param receiverItem The equipped item of the unit who will receive damage
+   * @param receiver A unit who will receive damage
+   */
+  public void dealAxeDamage(IEquipableItem receiverItem, IUnit receiver){
+    receiverItem.getAxeDamage(receiverItem,receiver);
+  }
+
+  /** Makes the unit receive Sword damage depending on their item, overrides parent's method to make damage effective
+   *
+   * @param receiverItem The equipped item of the user who will receive damage
+   * @param receiver The unit who will receive damage
    */
   @Override
-  public int getDamage(IUnit attacker, IUnit receiver){
-    IEquipableItem receiver_item = receiver.getEquippedItem();
-    int damage = this.getPower();
-    if (receiver_item instanceof Spear || receiver_item instanceof Light || receiver_item instanceof Dark || receiver_item instanceof Soul){
-      //efectivo
-      damage = damage + (damage/2);
-    }
-    else if (receiver_item instanceof Sword){
-      //debil
-      damage = damage - 20;
-    }
-    int attackerhp = attacker.getCurrentHitPoints();
-    attackerhp = attackerhp - damage;
-    if(attackerhp<0){
-      attacker.setHitPoints(0);
-    }
-    else{
-      attacker.setHitPoints(attackerhp);
-    }
+  public void getSwordDamage(IEquipableItem receiverItem, IUnit receiver){
+    int baseDamage = receiverItem.getPower();
+    receiver.getEffectiveDamage(baseDamage);
+  }
 
-    return damage;
+  /** Makes the unit receive Spear damage depending on their item, overrides parent's method to make damage resistant
+   *
+   * @param receiverItem The equipped item of the user who will receive damage
+   * @param receiver The unit who will receive damage
+   */
+  @Override
+  public void getSpearDamage(IEquipableItem receiverItem, IUnit receiver){
+    int baseDamage = receiverItem.getPower();
+    receiver.getResistantDamage(baseDamage);
   }
 
 
