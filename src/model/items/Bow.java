@@ -29,35 +29,44 @@ public class Bow extends AbstractItem {
     this.maxRange = Math.max(maxRange, this.minRange);
   }
 
+  private void dealBowDamage(IEquipableItem receiverItem, IUnit receiver){
+    int baseDamage = this.getPower();
+    receiverItem.getAxeDamage(receiver,baseDamage);
+  }
+
   /** Makes the unit receive Soul damage depending on their item, overrides parent's method to make damage resistant
    *
-   * @param receiverItem The equipped item of the user who will receive damage
    * @param receiver The unit who will receive damage
    */
   @Override
-  public void getSoulDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+  public void getSoulDamage(IUnit receiver, int baseDamage){
     receiver.getEffectiveDamage(baseDamage);
   }
 
   /** Makes the unit receive Dark damage depending on their item, overrides parent's method to make damage effective
    *
-   * @param receiverItem The equipped item of the user who will receive damage
    * @param receiver The unit who will receive damage
    * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
    */
   @Override
-  public void getDarkDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+  public void getDarkDamage(IUnit receiver, int baseDamage){
     receiver.getEffectiveDamage(baseDamage);
   }
 
   /** Makes the unit receive Light damage depending on the item, overrides parent's method to make damage effective
    *
-   * @param receiverItem The equipped item of the user who will receive damage
    * @param receiver The unit who will receive damage
    * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
    */
   @Override
-  public void getLightDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+  public void getLightDamage(IUnit receiver, int baseDamage){
     receiver.getEffectiveDamage(baseDamage);
+  }
+
+  public void doCombat(IUnit receiver){
+    dealBowDamage(receiver.getEquippedItem(),receiver);
+    if(receiver.getCurrentHitPoints() > 0){
+      //do counterattack
+    }
   }
 }

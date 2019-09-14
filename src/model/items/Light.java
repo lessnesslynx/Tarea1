@@ -30,29 +30,34 @@ public class Light extends AbstractItem {
      * @param receiverItem The equipped item of the unit who will receive damage
      * @param receiver A unit who will receive damage
      */
-    public void dealLightDamage(IEquipableItem receiverItem, IUnit receiver){
+    private void dealLightDamage(IEquipableItem receiverItem, IUnit receiver){
         int baseDamage = this.getPower();
-        receiverItem.getLightDamage(receiverItem,receiver,baseDamage);
+        receiverItem.getLightDamage(receiver,baseDamage);
     }
 
     /** Makes the unit receive Dark damage depending on their item, overrides parent's method to make damage resistant
      *
-     * @param receiverItem The equipped item of the user who will receive damage
      * @param receiver The unit who will receive damage
      * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
      */
-    public void getDarkDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+    public void getDarkDamage(IUnit receiver, int baseDamage){
         receiver.getResistantDamage(baseDamage);
     }
 
     /** Makes the unit receive Soul damage depending on their item, overrides parent's method to make damage effective
      *
-     * @param receiverItem The equipped item of the user who will receive damage
      * @param receiver The unit who will receive damage
      * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
      */
-    public void getSoulDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+    public void getSoulDamage(IUnit receiver, int baseDamage){
         receiver.getEffectiveDamage(baseDamage);
+    }
+
+    public void doCombat(IUnit receiver){
+        dealLightDamage(receiver.getEquippedItem(),receiver);
+        if(receiver.getCurrentHitPoints() > 0){
+            //do counterattack
+        }
     }
 
 }

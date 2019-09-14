@@ -70,62 +70,54 @@ public abstract class AbstractItem implements IEquipableItem {
   //endregion
 
   /** Makes the unit receive Sword damage depending on their item
-   *  @param receiverItem The equipped item of the user who will receive damage
    * @param receiver The unit who will receive damage
    * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
    */
-  public void getSwordDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+  public void getSwordDamage(IUnit receiver, int baseDamage){
     receiver.getNormalDamage(baseDamage);
   }
 
   /** Makes the unit receive Axe damage depending on their item
    *
-   * @param receiverItem The equipped item of the user who will receive damage
    * @param receiver The unit who will receive damage
    */
-  public void getAxeDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+  public void getAxeDamage(IUnit receiver, int baseDamage){
     receiver.getNormalDamage(baseDamage);
   }
 
   /** Makes the unit receive Spear damage depending on their item
    *
-   * @param receiverItem The equipped item of the user who will receive damage
    * @param receiver The unit who will receive damage
    */
-  public void getSpearDamage(IEquipableItem receiverItem, IUnit receiver,int baseDamage){
+  public void getSpearDamage(IUnit receiver,int baseDamage){
     receiver.getNormalDamage(baseDamage);
   }
 
   /** Makes the unit receive Soul damage depending on their item
    *
-   * @param receiverItem The equipped item of the user who will receive damage
    * @param receiver The unit who will receive damage
    */
-  public void getSoulDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+  public void getSoulDamage(IUnit receiver, int baseDamage){
     receiver.getNormalDamage(baseDamage);
   }
 
   /** Makes the unit receive Dark damage depending on their item
    *
-   * @param receiverItem The equipped item of the user who will receive damage
    * @param receiver The unit who will receive damage
    * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
    */
-  public void getDarkDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+  public void getDarkDamage(IUnit receiver, int baseDamage){
     receiver.getNormalDamage(baseDamage);
   }
 
   /** Makes the unit receive Light damage depending on their item
    *
-   * @param receiverItem The equipped item of the user who will receive damage
    * @param receiver The unit who will receive damage
    * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
    */
-  public void getLightDamage(IEquipableItem receiverItem, IUnit receiver, int baseDamage){
+  public void getLightDamage(IUnit receiver, int baseDamage){
     receiver.getNormalDamage(baseDamage);
   }
-
-
 
 }
 
