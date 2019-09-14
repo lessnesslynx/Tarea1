@@ -16,24 +16,24 @@ import org.junit.jupiter.api.Test;
  */
 public abstract class AbstractTestUnit implements ITestUnit {
 
-  protected Alpaca targetAlpaca;
-  protected Bow bow;
-  protected Field field;
-  protected Axe axe;
-  protected Sword sword;
-  protected Staff staff;
-  protected Spear spear;
+  private Alpaca targetAlpaca;
+  Bow bow;
+  Field field;
+  Axe axe;
+  Sword sword;
+  Staff staff;
+  Spear spear;
 
   @Override
   public void setTargetAlpaca() {
-    targetAlpaca = new Alpaca(50, 2, field.getCell(1, 0));
+    targetAlpaca = new Alpaca(50, 50, 2, field.getCell(1, 0));
   }
 
   /**
    * Sets up the units and weapons to be tested
    */
   @BeforeEach
-  public void setUp() {
+  void setUp() {
     setField();
     setTestUnit();
     setTargetAlpaca();

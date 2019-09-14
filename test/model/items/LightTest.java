@@ -4,26 +4,24 @@ import model.map.Location;
 import model.units.IUnit;
 import model.units.Sorcerer;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+class LightTest extends AbstractTestItem {
 
-class DarkTest extends AbstractTestItem {
-
-    private Dark dark;
-    private Dark wrongDark;
+    private Light light;
+    private Light wrongLight;
     private Sorcerer sorcerer;
 
     @Override
     public void setTestItem() {
-        expectedName = "Common dark magic";
+        expectedName = "Common dark item";
         expectedPower = 10;
         expectedMinRange = 1;
         expectedMaxRange = 2;
-        dark = new Dark(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
+        light = new Light(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
     }
 
     @Override
     public void setWrongRangeItem() {
-        wrongDark = new Dark("Wrong dark magic", 0, -1, -2);
+        wrongLight = new Light("Wrong dark item", 0, -1, -2);
     }
 
     @Override
@@ -33,12 +31,12 @@ class DarkTest extends AbstractTestItem {
 
     @Override
     public IEquipableItem getWrongTestItem() {
-        return wrongDark;
+        return wrongLight;
     }
 
     @Override
     public IEquipableItem getTestItem() {
-        return dark;
+        return light;
     }
 
     @Override

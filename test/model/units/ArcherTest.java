@@ -20,7 +20,7 @@ public class ArcherTest extends AbstractTestUnit {
    */
   @Override
   public void setTestUnit() {
-    archer = new Archer(50, 2, field.getCell(0, 0));
+    archer = new Archer(50, 50, 2, field.getCell(0, 0));
   }
 
   /**
