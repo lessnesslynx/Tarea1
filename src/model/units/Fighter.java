@@ -18,16 +18,13 @@ public class Fighter extends AbstractUnit {
     super(hitPoints, maxHitPoints, movement, location, 3, items);
   }
 
+
   /**
-   * Sets the currently equipped item of this unit.
-   *
-   * @param item
-   *     the item to equip
+   *  Sets the currently equipped item of this unit. Axe in the case of a Fighter
+   * @param axe The axe to be equipped
    */
   @Override
-  public void equipItem(final IEquipableItem item) {
-    if (item instanceof Axe) {
-      equippedItem = item;
-    }
+  public void equipAxe(final IEquipableItem axe){
+    equippedItem = axe;
   }
 }

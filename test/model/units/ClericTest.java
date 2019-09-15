@@ -3,6 +3,7 @@ package model.units;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import model.items.IEquipableItem;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -28,11 +29,19 @@ public class ClericTest extends AbstractTestUnit {
     return cleric;
   }
 
+  @Override
+  public void checkEquippedItem(IEquipableItem item) {
+
+  }
+
+  /**
+   * Tests if the Cleric can equip the staff
+   */
   @Test
   @Override
   public void equipStaffTest() {
     assertNull(cleric.getEquippedItem());
-    cleric.equipItem(staff);
+    cleric.equipStaff(staff);
     assertEquals(staff, cleric.getEquippedItem());
   }
 }

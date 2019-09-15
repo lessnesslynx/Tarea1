@@ -16,13 +16,7 @@ import model.map.Location;
  */
 public interface IUnit {
 
-  /**
-   * Sets the currently equipped item of this unit.
-   *
-   * @param item
-   *     the item to equip
-   */
-  void equipItem(IEquipableItem item);
+
 
   /** Gets the max hit points of the unit
    *
@@ -107,5 +101,35 @@ public interface IUnit {
    */
   void getHeal(int power);
 
+  /** Issues counterattack
+   *
+   * @param receiver The unit who receives the damage of the attack, who (may) counterattacks
+   * @param item The item to counterattack with
+   * @param attacker The attacker to counterattack
+   */
   void counterattack(IUnit receiver, IEquipableItem item, IUnit attacker);
+
+  /** Equips a staff to a Sorcerer, nothing if the unit is not a Sorcerer
+   *
+   * @param staff The staff to be equipped
+   */
+  void equipStaff(IEquipableItem staff);
+
+  /** Equips a bow to an Archer, nothing if the unit is not a Archer
+   *
+   * @param bow The bow to be equipped
+   */
+  void equipBow(IEquipableItem bow);
+
+  void equipAxe(IEquipableItem axe);
+
+  void equipSpear(IEquipableItem spear);
+
+  void equipDark(IEquipableItem dark);
+
+  void equipLight(IEquipableItem light);
+
+  void equipSoul(IEquipableItem soul);
+
+  void equipSword(IEquipableItem sword);
 }

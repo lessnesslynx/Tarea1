@@ -18,17 +18,11 @@ public class SwordMaster extends AbstractUnit {
     super(hitPoints, maxHitPoints, movement, location, 3, items);
   }
 
-  /**
-   * Sets the currently equipped item of this unit.
-   *
-   * @param item
-   *     the item to equip
-   */
+
+
   @Override
-  public void equipItem(final IEquipableItem item) {
-    if (item instanceof SwordMaster) {
-      equippedItem = item;
-    }
+  public void equipSword(IEquipableItem sword){
+    equippedItem = sword;
   }
 
 }

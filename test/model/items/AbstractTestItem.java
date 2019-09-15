@@ -4,7 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import model.map.Field;
+import model.map.Location;
+import model.units.Fighter;
 import model.units.IUnit;
+import model.units.Sorcerer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +24,21 @@ public abstract class AbstractTestItem {
   int expectedPower;
   short expectedMinRange;
   short expectedMaxRange;
+
+  private Field field = new Field();
+
+  /**
+   * Set up the game field
+   */
+  public void setField() {
+    this.field = new Field();
+    this.field.addCells(true, new Location(0, 0), new Location(0, 1), new Location(0, 2),
+            new Location(1, 0), new Location(1, 1), new Location(1, 2), new Location(2, 0),
+            new Location(2, 1), new Location(2, 2));
+  }
+
+  Fighter testFighter = new Fighter(50, 50, 2, field.getCell(0, 1));
+  Sorcerer testSorcerer = new Sorcerer(50, 50, 2, field.getCell(0, 0));
 
   /**
    * Sets up the items to be tested

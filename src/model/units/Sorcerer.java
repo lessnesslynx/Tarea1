@@ -15,10 +15,21 @@ public class Sorcerer extends AbstractUnit{
         super(hitPoints, maxHitPoints, movement, location, 3, items);
     }
 
+
     @Override
-    public void equipItem(IEquipableItem item) {
-        if(item instanceof Dark || item instanceof Light || item instanceof Soul){
-            equippedItem = item;
-        }
+    public void equipDark(IEquipableItem dark){
+        equippedItem = dark;
     }
+
+    @Override
+    public void equipLight(IEquipableItem light){
+        equippedItem = light;
+    }
+
+    @Override
+    public void equipSoul(IEquipableItem soul){
+        equippedItem = soul;
+    }
+
+
 }

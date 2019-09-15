@@ -10,6 +10,8 @@ import model.map.Location;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 /**
  * @author Ignacio Slater Muñoz
  * @since 1.0
@@ -23,6 +25,9 @@ public abstract class AbstractTestUnit implements ITestUnit {
   Sword sword;
   Staff staff;
   Spear spear;
+  Dark dark;
+  Light light;
+  Soul soul;
 
   @Override
   public void setTargetAlpaca() {
@@ -103,10 +108,58 @@ public abstract class AbstractTestUnit implements ITestUnit {
    * @param item
    *     to be equipped
    */
-  @Override
-  public void checkEquippedItem(IEquipableItem item) {
+  void checkEquippedSword(IEquipableItem item) {
     assertNull(getTestUnit().getEquippedItem());
-    getTestUnit().equipItem(item);
+    getTestUnit().equipSword(item);
+    assertNull(getTestUnit().getEquippedItem());
+  }
+
+  /**
+   * Tries to equip a weapon to the alpaca and verifies that it was not equipped, with an axe
+   *
+   * @param item
+   *     to be equipped
+   */
+  public void checkEquippedAxe(IEquipableItem item) {
+    assertNull(getTestUnit().getEquippedItem());
+    getTestUnit().equipAxe(item);
+    assertNull(getTestUnit().getEquippedItem());
+  }
+
+  /**
+   * Tries to equip a weapon to the alpaca and verifies that it was not equipped, with a spear
+   *
+   * @param item
+   *     to be equipped
+   */
+  void checkEquippedSpear(IEquipableItem item) {
+    assertNull(getTestUnit().getEquippedItem());
+    getTestUnit().equipSpear(item);
+    assertNull(getTestUnit().getEquippedItem());
+  }
+
+  /**
+   * Tries to equip a weapon to the alpaca and verifies that it was not equipped, with a staff
+   *
+   * @param item
+   *     to be equipped
+   */
+  void checkEquippedStaff(IEquipableItem item) {
+    assertNull(getTestUnit().getEquippedItem());
+    getTestUnit().equipStaff(item);
+    assertNull(getTestUnit().getEquippedItem());
+  }
+
+
+  /**
+   * Tries to equip a weapon to the alpaca and verifies that it was not equipped, with a bow
+   *
+   * @param item
+   *     to be equipped
+   */
+  void checkEquippedBow(IEquipableItem item) {
+    assertNull(getTestUnit().getEquippedItem());
+    getTestUnit().equipBow(item);
     assertNull(getTestUnit().getEquippedItem());
   }
 
@@ -121,7 +174,7 @@ public abstract class AbstractTestUnit implements ITestUnit {
   @Override
   @Test
   public void equipSwordTest() {
-    checkEquippedItem(getSword());
+    checkEquippedSword(getSword());
   }
 
   /**
@@ -135,7 +188,7 @@ public abstract class AbstractTestUnit implements ITestUnit {
   @Override
   @Test
   public void equipSpearTest() {
-    checkEquippedItem(getSpear());
+    checkEquippedSpear(getSpear());
   }
 
   /**
@@ -149,7 +202,7 @@ public abstract class AbstractTestUnit implements ITestUnit {
   @Override
   @Test
   public void equipStaffTest() {
-    checkEquippedItem(getStaff());
+    checkEquippedStaff(getStaff());
   }
 
   /**
@@ -163,7 +216,7 @@ public abstract class AbstractTestUnit implements ITestUnit {
   @Override
   @Test
   public void equipBowTest() {
-    checkEquippedItem(getBow());
+    checkEquippedBow(getBow());
   }
 
   /**
@@ -207,67 +260,154 @@ public abstract class AbstractTestUnit implements ITestUnit {
     return targetAlpaca;
   }
 
+  /**
+   * Tests if the method gets the corresponding amount for max Hit Points
+   */
     @Test
     void getMaxHitPoints() {
     assertEquals(targetAlpaca.getMaxHitPoints(),50);
     }
 
-    @Test
+  /**
+   * Tests if the method gets the corresponding amount of hit points
+   */
+  @Test
     void getCurrentHitPoints() {
     assertEquals(targetAlpaca.getMaxHitPoints(),50);
     axe.dealAxeDamage(axe,targetAlpaca);
     assertEquals(targetAlpaca.getCurrentHitPoints(),40);
     }
 
-    @Test
+  /**
+   * Tests if the method sets the corresponding amount of hit points
+   */
+  @Test
     void setHitPoints() {
+    targetAlpaca.setHitPoints(45);
+    assertEquals(targetAlpaca.getCurrentHitPoints(),45);
     }
 
-    @Test
+  /**
+   * Tests if the method gets a list of the current items of the unit
+   */
+  @Test
     void getItems() {
+    ArrayList a = new ArrayList<>();
+    assertEquals(targetAlpaca.getItems(),a);
     }
 
-    @Test
+  /**
+   * Tests if the method gets the corresponding object
+   */
+  @Test
     void getEquippedItem() {
+    assertNull(targetAlpaca.getEquippedItem());
+    targetAlpaca.setEquippedItem(axe);
+    assertEquals(targetAlpaca.getEquippedItem(),axe);
     }
 
-    @Test
+  /**
+   * Tests if the method sets the corresponding object
+   */
+  @Test
     void setEquippedItem() {
+      targetAlpaca.setEquippedItem(sword);
+      assertEquals(targetAlpaca.getEquippedItem(),sword);
     }
 
-    @Test
+  /**
+   * Tests if the method gets the corresponding value
+   */
+  @Test
     void getLocation() {
+      assertEquals(targetAlpaca.getLocation(),field.getCell(1, 0));
     }
 
-    @Test
+  /**
+   * Tests if the method sets the corresponding value
+   */
+  @Test
     void setLocation() {
+      targetAlpaca.setLocation(field.getCell(1,1));
+      assertEquals(targetAlpaca.getLocation(),field.getCell(1, 1));
     }
 
-    @Test
+  /**
+   * Tests if the method gets the corresponding value
+   */
+  @Test
     void getMovement() {
+    assertEquals(targetAlpaca.getMovement(),2);
     }
 
-    @Test
+  /**
+   * Tests movement
+   */
+  @Test
     void moveTo() {
+      targetAlpaca.moveTo(field.getCell(0,0));
+      assertEquals(targetAlpaca.getLocation(),field.getCell(0, 0));
+      targetAlpaca.moveTo(field.getCell(2,2));
+      assertEquals(targetAlpaca.getLocation(),field.getCell(0, 0));
     }
 
-    @Test
+  /**
+   * Tests cases of normal damage
+   */
+  @Test
     void getNormalDamage() {
+      targetAlpaca.setHitPoints(50);
+      targetAlpaca.getNormalDamage(25);
+      assertEquals(targetAlpaca.getCurrentHitPoints(),25);
+      targetAlpaca.getNormalDamage(35);
+      assertEquals(targetAlpaca.getCurrentHitPoints(),0);
     }
 
-    @Test
+  /**
+   *  Tests cases of resistant damage
+   */
+  @Test
     void getResistantDamage() {
+      targetAlpaca.setHitPoints(50);
+      targetAlpaca.getResistantDamage(25);
+      assertEquals(targetAlpaca.getCurrentHitPoints(),45);
+      targetAlpaca.getResistantDamage(15);
+      assertEquals(targetAlpaca.getCurrentHitPoints(),45);
     }
 
-    @Test
+  /**
+   * Tests cases of Effective damage
+   */
+  @Test
     void getEffectiveDamage() {
+      targetAlpaca.setHitPoints(50);
+      targetAlpaca.getEffectiveDamage(20);
+      assertEquals(targetAlpaca.getCurrentHitPoints(),20);
+      targetAlpaca.getEffectiveDamage(20);
+      assertEquals(targetAlpaca.getCurrentHitPoints(),0);
     }
 
-    @Test
+  /**
+   * Tests a simple heal on a unit
+   */
+  @Test
     void getHeal() {
+      targetAlpaca.setHitPoints(20);
+      targetAlpaca.getHeal(10);
+      targetAlpaca.setHitPoints(30);
     }
 
-    @Test
+  /**
+   * Checks counter attack, sets a new weapon and a different unit to test counterattack
+   */
+  @Test
     void counterattack() {
+      targetAlpaca.setHitPoints(50);
+      targetAlpaca.setLocation(field.getCell(1,1));
+      Fighter testEnemy = new Fighter(100,100,2,field.getCell(1, 0),axe);
+      testEnemy.equipAxe(axe);
+      targetAlpaca.setEquippedItem(axe);
+      testEnemy.counterattack(testEnemy,axe,targetAlpaca);
+      assertEquals(targetAlpaca.getCurrentHitPoints(),40);
     }
 }

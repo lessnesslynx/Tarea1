@@ -26,16 +26,17 @@ public class Cleric extends AbstractUnit {
     super(hitPoints, maxHitPoints, movement, location, 3, items);
   }
 
+
+
+
   /**
-   * Sets the currently equipped item of this unit.
-   *
-   * @param item
-   *     the item to equip
+   *  Sets the currently equipped item of this unit. Staff in the case of a Cleric
+   * @param staff The staff to be equipped
    */
   @Override
-  public void equipItem(final IEquipableItem item) {
-    if (item instanceof Staff) {
-      equippedItem = item;
-    }
+  public void equipStaff(final IEquipableItem staff){
+    equippedItem = staff;
   }
+
+
 }

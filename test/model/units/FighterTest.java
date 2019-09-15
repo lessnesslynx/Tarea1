@@ -3,6 +3,7 @@ package model.units;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import model.items.IEquipableItem;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -35,7 +36,12 @@ public class FighterTest extends AbstractTestUnit {
   @Override
   public void equipAxeTest() {
     assertNull(fighter.getEquippedItem());
-    fighter.equipItem(axe);
+    fighter.equipAxe(axe);
     assertEquals(axe, fighter.getEquippedItem());
+  }
+
+  @Override
+  public void checkEquippedItem(IEquipableItem item) {
+
   }
 }

@@ -147,8 +147,24 @@ public abstract class AbstractUnit implements IUnit {
   }
 
   public void counterattack(IUnit receiver, IEquipableItem item, IUnit attacker){
-    if(attacker.getLocation().distanceTo(receiver.getLocation())>item.getMinRange()&&attacker.getLocation().distanceTo(receiver.getLocation())>item.getMaxRange()) {
+    if(attacker.getLocation().distanceTo(receiver.getLocation())>=item.getMinRange()&&attacker.getLocation().distanceTo(receiver.getLocation())<=item.getMaxRange()) {
       item.doCounter(attacker);
     }
   }
+
+  public void equipStaff(IEquipableItem staff){/*does nothing equips nothing*/}
+
+  public void equipBow(IEquipableItem staff){/*does nothing equips nothing*/}
+
+  public void equipAxe(IEquipableItem axe){/*does nothing equips nothing*/}
+
+  public void equipSpear(IEquipableItem axe){/*does nothing equips nothing*/}
+
+  public void equipDark(IEquipableItem dark){/*does nothing equips nothing*/}
+
+  public void equipLight(IEquipableItem light){/*does nothing equips nothing*/}
+
+  public void equipSoul(IEquipableItem soul){/*does nothing equips nothing*/}
+
+  public void equipSword(IEquipableItem sword){/*does nothing equips nothing*/}
 }

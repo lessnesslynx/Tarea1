@@ -31,18 +31,17 @@ public class Archer extends AbstractUnit {
     super(hitPoints, maxHitPoints, movement, position, 3, items);
   }
 
+
+
+
   /**
-   * Sets the currently equipped item of this unit.
-   * <p>
-   * The <i>Archer</i> can <b>only equip Bows</b>.
-   *
-   * @param item
-   *     the item to equip
+   *  Sets the currently equipped item of this unit. Bow in the case of an archer
+   * @param bow The bow to be equipped
    */
   @Override
-  public void equipItem(final IEquipableItem item) {
-    if (item instanceof Bow) {
-      equippedItem = item;
-    }
+  public void equipBow(final IEquipableItem bow) {
+
+    equippedItem = bow;
+
   }
 }
