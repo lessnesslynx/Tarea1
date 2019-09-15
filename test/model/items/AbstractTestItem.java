@@ -6,9 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import model.map.Field;
 import model.map.Location;
-import model.units.Fighter;
-import model.units.IUnit;
-import model.units.Sorcerer;
+import model.units.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +23,15 @@ public abstract class AbstractTestItem {
   short expectedMinRange;
   short expectedMaxRange;
 
+  private Bow bow;
+  private Axe axe;
+  private Sword sword;
+  private Staff staff;
+  private Spear spear;
+  Dark dark;
+  private Light light;
+  private Soul soul;
+
   private Field field = new Field();
 
   /**
@@ -38,7 +45,24 @@ public abstract class AbstractTestItem {
   }
 
   Fighter testFighter = new Fighter(50, 50, 2, field.getCell(0, 1));
-  Sorcerer testSorcerer = new Sorcerer(50, 50, 2, field.getCell(0, 0));
+  private Sorcerer testSorcerer = new Sorcerer(50, 50, 2, field.getCell(0, 0));
+  private SwordMaster swordMaster = new SwordMaster(50, 50, 2, field.getCell(0, 0));
+  private Hero testHero = new Hero(50, 50, 2, field.getCell(0, 0));
+  private Archer testArcher = new Archer(50,50,2,field.getCell(0, 0));
+
+  /**
+   * Creates a set of testing weapons
+   */
+  void setWeapons() {
+    this.axe = new Axe("Axe", 10, 1, 2);
+    this.sword = new Sword("Sword", 10, 1, 2);
+    this.spear = new Spear("Spear", 10, 1, 2);
+    this.staff = new Staff("Staff", 10, 1, 2);
+    this.bow = new Bow("Bow", 10, 2, 3);
+    this.dark = new Dark("Dark", 10,1,2);
+    this.light = new Light("Light",10,1,2);
+    this.soul = new Soul("Soul",10,1,2);
+  }
 
   /**
    * Sets up the items to be tested
@@ -46,6 +70,7 @@ public abstract class AbstractTestItem {
   @BeforeEach
   void setUp() {
     setTestItem();
+    setWeapons();
     setWrongRangeItem();
     setTestUnit();
   }
@@ -135,4 +160,178 @@ public abstract class AbstractTestItem {
    * @return a unit that can equip the item being tested
    */
   public abstract IUnit getTestUnit();
+
+
+  /**
+   * Checks that the a unit receives the corresponding damage
+   * In this case, if an axe receives effective dark damage
+   */
+  @Test
+  void getDarkDamageTest() {
+    testFighter.equipAxe(axe);
+    axe.dealAxeDamage(dark,testSorcerer);
+    assertEquals(testSorcerer.getCurrentHitPoints(),35);
+  }
+
+  /**
+   * Checks that the a unit receives the corresponding damage
+   * In this case, if an axe receives effective light damage
+   */
+  @Test
+  void getLightDamageTest() {
+    testFighter.equipAxe(axe);
+    axe.dealAxeDamage(light,testSorcerer);
+    assertEquals(testSorcerer.getCurrentHitPoints(),35);
+  }
+
+  /**
+   * Checks that the a unit receives the corresponding damage
+   * In this case, if an axe receives effective and regular light damage
+   */
+  @Test
+  void getSoulDamageTest() {
+    testFighter.equipAxe(axe);
+    axe.dealAxeDamage(soul,testSorcerer);
+    assertEquals(testSorcerer.getCurrentHitPoints(),35);
+    axe.dealAxeDamage(axe,testSorcerer);
+    assertEquals(testSorcerer.getCurrentHitPoints(),25);
+  }
+
+  /**
+   * Checks that the a unit receives the corresponding damage
+   * In this case, if an axe receives effective and regular sword damage
+   */
+  @Test
+  void getSwordDamageTest() {
+    testFighter.equipAxe(axe);
+    swordMaster.equipSword(sword);
+    sword.dealSwordDamage(axe,testFighter);
+    assertEquals(testFighter.getCurrentHitPoints(),35);
+    sword.dealSwordDamage(sword,testFighter);
+    assertEquals(testFighter.getCurrentHitPoints(),25);
+  }
+
+  /**
+   * Checks that the a unit receives healing
+   */
+  @Test
+  void getHealTest() {
+    swordMaster.equipSword(sword);
+    sword.dealSwordDamage(axe,testSorcerer);
+    assertEquals(testSorcerer.getCurrentHitPoints(),35);
+    testSorcerer.getHeal(10);
+    assertEquals(testSorcerer.getCurrentHitPoints(),45);
+    testSorcerer.getHeal(10);
+    assertEquals(testSorcerer.getCurrentHitPoints(),50);
+  }
+
+  /**
+   * Checks that the a unit receives the corresponding damage
+   * In this case, if an axe receives effective, resistant and regular spear damage
+   */
+  @Test
+  void getSpearDamageTest() {
+    testFighter.equipAxe(axe);
+    testHero.equipSpear(spear);
+    spear.dealSpearDamage(soul,testFighter);
+    assertEquals(testFighter.getCurrentHitPoints(),35);
+    spear.dealSpearDamage(axe,testFighter);
+    assertEquals(testFighter.getCurrentHitPoints(),35);
+    spear.dealSpearDamage(spear,testFighter);
+    assertEquals(testFighter.getCurrentHitPoints(),25);
+  }
+
+  /**
+   * Checks that the a unit receives the corresponding damage
+   * In this case, if an axe receives effective and regular bow damage
+   */
+  @Test
+  void getBowDamageTest() {
+    testArcher.equipBow(bow);
+    testHero.equipSpear(spear);
+    testSorcerer.equipLight(light);
+    bow.dealBowDamage(bow,testFighter);
+    assertEquals(testFighter.getCurrentHitPoints(),40);
+    bow.dealBowDamage(light,testSorcerer);
+    assertEquals(testSorcerer.getCurrentHitPoints(),35);
+    bow.dealBowDamage(bow,testSorcerer);
+    assertEquals(testSorcerer.getCurrentHitPoints(),25);
+  }
+
+
+  /**
+   * Checks if counter attack does the corresponding damage
+   */
+  @Test
+  void doCounterTest(){
+    testSorcerer.equipLight(light);
+    bow.doCounter(testSorcerer);
+    assertEquals(testSorcerer.getCurrentHitPoints(),35);
+  }
+
+  /**
+   * Checks that the a unit receives the corresponding damage
+   * In this case, if an axe receives effective and regular axe damage
+   */
+  @Test
+  void getAxeDamageTest(){
+    testFighter.equipAxe(axe);
+    testSorcerer.equipLight(light);
+    axe.dealAxeDamage(light,testSorcerer);
+    assertEquals(testSorcerer.getCurrentHitPoints(),35);
+    axe.dealAxeDamage(axe,testSorcerer);
+    assertEquals(testSorcerer.getCurrentHitPoints(),25);
+    axe.dealAxeDamage(dark,testSorcerer);
+    assertEquals(testSorcerer.getCurrentHitPoints(),10);
+    axe.dealAxeDamage(soul,testSorcerer);
+    assertEquals(testSorcerer.getCurrentHitPoints(),0);
+  }
+
+  /**
+   * Checks combat
+   */
+  @Test
+  void doCombatTest(){
+    testFighter.equipAxe(axe);
+    testSorcerer.equipLight(light);
+    testSorcerer.setHitPoints(5);
+    axe.doCombat(testSorcerer);
+    assertEquals(0,testSorcerer.getCurrentHitPoints());
+  }
+
+  /**
+   * Continuous attack sequence test to check if HPs keeps going down
+   * Testing random effectiveness while doing it (specific weaknesses are tested in its subclasses)
+   */
+  @Test
+  void DamageTest(){
+    testFighter.equipAxe(axe);
+    testSorcerer.equipLight(light);
+    light.getSwordDamage(testFighter,10);
+    assertEquals(50,testSorcerer.getCurrentHitPoints());
+    assertEquals(35,testFighter.getCurrentHitPoints());
+    bow.getSwordDamage(testFighter,10);
+    assertEquals(25,testFighter.getCurrentHitPoints());
+    bow.getLightDamage(testFighter,10);
+    assertEquals(10,testFighter.getCurrentHitPoints());
+    staff.getLightDamage(testSorcerer,10);
+    assertEquals(40,testSorcerer.getCurrentHitPoints());
+    dark.getSoulDamage(testSorcerer,10);
+    assertEquals(40,testSorcerer.getCurrentHitPoints());
+    soul.getLightDamage(testSorcerer,10);
+    assertEquals(40,testSorcerer.getCurrentHitPoints());
+    light.getDarkDamage(testSorcerer,10);
+    assertEquals(40,testSorcerer.getCurrentHitPoints());
+    soul.getDarkDamage(testSorcerer,10);
+    assertEquals(25,testSorcerer.getCurrentHitPoints());
+    light.getSoulDamage(testSorcerer,10);
+    assertEquals(10,testSorcerer.getCurrentHitPoints());
+    dark.getLightDamage(testSorcerer,10);
+    assertEquals(0,testSorcerer.getCurrentHitPoints());
+
+
+
+  }
 }
+
+

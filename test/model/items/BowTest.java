@@ -1,5 +1,6 @@
 package model.items;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import model.map.Location;
@@ -76,5 +77,41 @@ public class BowTest extends AbstractTestItem {
   @Override
   public IUnit getTestUnit() {
     return archer;
+  }
+
+  /**
+   * Checks if Bow gets regular damage from axes
+   */
+  @Override
+  @Test
+  public void getAxeDamageTest(){
+    archer.setHitPoints(50);
+    archer.equipAxe(bow);
+    bow.getSwordDamage(archer,10);
+    assertEquals(archer.getCurrentHitPoints(),40);
+  }
+
+  /**
+   * Checks if Bow gets regular damage from swords
+   */
+  @Override
+  @Test
+  public void getSwordDamageTest(){
+    archer.setHitPoints(50);
+    archer.equipAxe(bow);
+    bow.getSwordDamage(archer,10);
+    assertEquals(archer.getCurrentHitPoints(),40);
+  }
+
+  /**
+   * Checks if Bow gets regular damage from spears
+   */
+  @Override
+  @Test
+  public void getSpearDamageTest(){
+    archer.setHitPoints(50);
+    archer.equipAxe(bow);
+    bow.getSwordDamage(archer,10);
+    assertEquals(archer.getCurrentHitPoints(),40);
   }
 }

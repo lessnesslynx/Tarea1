@@ -3,7 +3,9 @@ package model.items;
 import model.map.Location;
 import model.units.IUnit;
 import model.units.Sorcerer;
+import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DarkTest extends AbstractTestItem {
@@ -44,6 +46,54 @@ class DarkTest extends AbstractTestItem {
     @Override
     public IUnit getTestUnit() {
         return sorcerer;
+    }
+
+    /**
+     * Checks if Dark gets effective damage from axes
+     */
+    @Override
+    @Test
+    public void getAxeDamageTest(){
+        sorcerer.setHitPoints(50);
+        sorcerer.equipAxe(dark);
+        dark.getAxeDamage(sorcerer,10);
+        assertEquals(sorcerer.getCurrentHitPoints(),35);
+    }
+
+    /**
+     * Checks if Dark gets effective damage from swords
+     */
+    @Override
+    @Test
+    public void getSwordDamageTest(){
+        sorcerer.setHitPoints(50);
+        sorcerer.equipAxe(dark);
+        dark.getSwordDamage(sorcerer,10);
+        assertEquals(sorcerer.getCurrentHitPoints(),35);
+    }
+
+    /**
+     * Checks if Dark gets effective damage from spears
+     */
+    @Override
+    @Test
+    public void getSpearDamageTest(){
+        sorcerer.setHitPoints(50);
+        sorcerer.equipAxe(dark);
+        dark.getSpearDamage(sorcerer,10);
+        assertEquals(sorcerer.getCurrentHitPoints(),35);
+    }
+
+    /**
+     * Checks if Dark gets effective damage from bows
+     */
+    @Override
+    @Test
+    public void getBowDamageTest(){
+        sorcerer.setHitPoints(50);
+        sorcerer.equipAxe(dark);
+        dark.getBowDamage(sorcerer,10);
+        assertEquals(sorcerer.getCurrentHitPoints(),35);
     }
 
 }

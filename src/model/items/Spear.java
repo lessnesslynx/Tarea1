@@ -34,7 +34,7 @@ public class Spear extends AbstractItem {
    * @param receiverItem The equipped item of the unit who will receive damage
    * @param receiver A unit who will receive damage
    */
-  private void dealSpearDamage(IEquipableItem receiverItem, IUnit receiver){
+  void dealSpearDamage(IEquipableItem receiverItem, IUnit receiver){
     int baseDamage = this.getPower();
     receiverItem.getSpearDamage(receiver,baseDamage);
   }

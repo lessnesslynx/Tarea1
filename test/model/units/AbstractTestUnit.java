@@ -410,4 +410,18 @@ public abstract class AbstractTestUnit implements ITestUnit {
       testEnemy.counterattack(testEnemy,axe,targetAlpaca);
       assertEquals(targetAlpaca.getCurrentHitPoints(),40);
     }
+
+  @Test
+  void equipStaff() {
+    targetAlpaca.equipStaff(staff);
+    assertNull(targetAlpaca.getEquippedItem());
+
+  }
+
+  @Test
+  void equipBow() {
+    targetAlpaca.equipBow(bow);
+    assertNull(targetAlpaca.getEquippedItem());
+
+  }
 }

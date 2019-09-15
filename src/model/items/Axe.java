@@ -91,10 +91,10 @@ public class Axe extends AbstractItem {
    *
    * @param receiver the unit who will receive damage
    */
-  public void doCombat(IUnit receiver){
+  void doCombat(IUnit receiver){
     dealAxeDamage(receiver.getEquippedItem(),receiver);
     if(receiver.getCurrentHitPoints() > 0){
-      receiver.counterattack(receiver,receiver.getEquippedItem(),this.getOwner());
+      receiver.counterattack(receiver,this,this.getOwner());
     }
   }
 

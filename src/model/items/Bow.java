@@ -29,7 +29,7 @@ public class Bow extends AbstractItem {
     this.maxRange = Math.max(maxRange, this.minRange);
   }
 
-  private void dealBowDamage(IEquipableItem receiverItem, IUnit receiver){
+  void dealBowDamage(IEquipableItem receiverItem, IUnit receiver){
     int baseDamage = this.getPower();
     receiverItem.getAxeDamage(receiver,baseDamage);
   }

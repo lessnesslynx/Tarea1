@@ -65,6 +65,42 @@ public class Soul extends AbstractItem {
         }
     }
 
+    /** Makes the unit receive Axe damage depending on their item, overrides parent's method to make damage effective
+     *
+     * @param receiver The unit who will receive damage
+     * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
+     */
+    public void getAxeDamage(IUnit receiver, int baseDamage){
+        receiver.getEffectiveDamage(baseDamage);
+    }
+
+    /** Makes the unit receive Sword damage depending on their item, overrides parent's method to make damage effective
+     *
+     * @param receiver The unit who will receive damage
+     * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
+     */
+    public void getSwordDamage(IUnit receiver, int baseDamage){
+        receiver.getEffectiveDamage(baseDamage);
+    }
+
+    /** Makes the unit receive Spear damage depending on their item, overrides parent's method to make damage effective
+     *
+     * @param receiver The unit who will receive damage
+     * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
+     */
+    public void getSpearDamage(IUnit receiver, int baseDamage){
+        receiver.getEffectiveDamage(baseDamage);
+    }
+
+    /** Makes the unit receive Bow damage depending on their item, overrides parent's method to make damage effective
+     *
+     * @param receiver The unit who will receive damage
+     * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
+     */
+    public void getBowDamage(IUnit receiver, int baseDamage){
+        receiver.getEffectiveDamage(baseDamage);
+    }
+
     /** Counter attack, it deals damage after an attack, by getting called after an attack
      *
      * @param target the target, who will receive damage on the counter attack
