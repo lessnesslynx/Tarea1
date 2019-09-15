@@ -206,4 +206,68 @@ public abstract class AbstractTestUnit implements ITestUnit {
   public Alpaca getTargetAlpaca() {
     return targetAlpaca;
   }
+
+    @Test
+    void getMaxHitPoints() {
+    assertEquals(targetAlpaca.getMaxHitPoints(),50);
+    }
+
+    @Test
+    void getCurrentHitPoints() {
+    assertEquals(targetAlpaca.getMaxHitPoints(),50);
+    axe.dealAxeDamage(axe,targetAlpaca);
+    assertEquals(targetAlpaca.getCurrentHitPoints(),40);
+    }
+
+    @Test
+    void setHitPoints() {
+    }
+
+    @Test
+    void getItems() {
+    }
+
+    @Test
+    void getEquippedItem() {
+    }
+
+    @Test
+    void setEquippedItem() {
+    }
+
+    @Test
+    void getLocation() {
+    }
+
+    @Test
+    void setLocation() {
+    }
+
+    @Test
+    void getMovement() {
+    }
+
+    @Test
+    void moveTo() {
+    }
+
+    @Test
+    void getNormalDamage() {
+    }
+
+    @Test
+    void getResistantDamage() {
+    }
+
+    @Test
+    void getEffectiveDamage() {
+    }
+
+    @Test
+    void getHeal() {
+    }
+
+    @Test
+    void counterattack() {
+    }
 }
