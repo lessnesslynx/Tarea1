@@ -92,11 +92,24 @@ public class Sword extends AbstractItem {
       receiver.getEffectiveDamage(baseDamage);
   }
 
-  public void doCombat(IUnit receiver){
-      dealSwordDamage(receiver.getEquippedItem(),receiver);
-      if(receiver.getCurrentHitPoints() > 0){
-          //do counterattack
-      }
-  }
+    /** Item does combat, inflicting Sword damage
+     *
+     * @param receiver the unit who will receive damage
+     */
+    public void doCombat(IUnit receiver){
+        dealSwordDamage(receiver.getEquippedItem(),receiver);
+        if(receiver.getCurrentHitPoints() > 0){
+            receiver.counterattack(receiver,receiver.getEquippedItem(),this.getOwner());
+        }
+    }
+
+    /** Counter attack, it deals damage after an attack, by getting called after an attack
+     *
+     * @param target the target, who will receive damage on the counter attack
+     */
+    @Override
+    public void doCounter(IUnit target){
+        dealSwordDamage(target.getEquippedItem(),target);
+    }
 
 }

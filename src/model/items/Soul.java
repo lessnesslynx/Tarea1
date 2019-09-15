@@ -54,10 +54,23 @@ public class Soul extends AbstractItem {
         receiver.getResistantDamage(baseDamage);
     }
 
+    /** Item does combat, inflicting Soul damage
+     *
+     * @param receiver the unit who will receive damage
+     */
     public void doCombat(IUnit receiver){
         dealSoulDamage(receiver.getEquippedItem(),receiver);
         if(receiver.getCurrentHitPoints() > 0){
-            //do counterattack
+            receiver.counterattack(receiver,receiver.getEquippedItem(),this.getOwner());
         }
+    }
+
+    /** Counter attack, it deals damage after an attack, by getting called after an attack
+     *
+     * @param target the target, who will receive damage on the counter attack
+     */
+    @Override
+    public void doCounter(IUnit target){
+        dealSoulDamage(target.getEquippedItem(),target);
     }
 }
