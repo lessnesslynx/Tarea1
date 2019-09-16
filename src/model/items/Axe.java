@@ -96,6 +96,7 @@ public class Axe extends AbstractItem {
     if(receiver.getCurrentHitPoints() > 0){
       receiver.counterattack(receiver,this,this.getOwner());
     }
+
   }
 
 
