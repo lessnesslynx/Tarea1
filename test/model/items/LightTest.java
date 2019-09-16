@@ -95,4 +95,17 @@ class LightTest extends AbstractTestItem {
         assertEquals(sorcerer.getCurrentHitPoints(),35);
     }
 
+    /**
+     * Check if dealLightDamage deals damage (and the appropriate amount of damage)
+     */
+    @Test
+    void dealLightDamageTest(){
+
+        sorcerer.setHitPoints(50);
+
+        light.dealLightDamage(dark,sorcerer);
+        assertEquals(sorcerer.getCurrentHitPoints(),35);
+        light.dealLightDamage(light,sorcerer);
+        assertEquals(sorcerer.getCurrentHitPoints(),25);
+    }
 }

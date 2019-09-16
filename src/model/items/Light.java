@@ -30,7 +30,7 @@ public class Light extends AbstractItem {
      * @param receiverItem The equipped item of the unit who will receive damage
      * @param receiver A unit who will receive damage
      */
-    private void dealLightDamage(IEquipableItem receiverItem, IUnit receiver){
+    void dealLightDamage(IEquipableItem receiverItem, IUnit receiver){
         int baseDamage = this.getPower();
         receiverItem.getLightDamage(receiver,baseDamage);
     }

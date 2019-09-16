@@ -31,7 +31,7 @@ public class Dark extends AbstractItem {
      * @param receiverItem The equipped item of the unit who will receive damage
      * @param receiver A unit who will receive damage
      */
-    private void dealDarkDamage(IEquipableItem receiverItem, IUnit receiver){
+    void dealDarkDamage(IEquipableItem receiverItem, IUnit receiver){
         int baseDamage = this.getPower();
         receiverItem.getDarkDamage(receiver,baseDamage);
     }

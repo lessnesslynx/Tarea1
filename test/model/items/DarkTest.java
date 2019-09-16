@@ -96,4 +96,42 @@ class DarkTest extends AbstractTestItem {
         assertEquals(sorcerer.getCurrentHitPoints(),35);
     }
 
+    /**
+     * Checks if Dark gets effective damage from light
+     */
+    @Override
+    @Test
+    public void getLightDamageTest(){
+        sorcerer.setHitPoints(50);
+        sorcerer.equipAxe(dark);
+        dark.getLightDamage(sorcerer,10);
+        assertEquals(sorcerer.getCurrentHitPoints(),35);
+    }
+
+    /**
+     * Checks if Dark gets regular damage from Dark
+     */
+    @Override
+    @Test
+    public void getDarkDamageTest(){
+        sorcerer.setHitPoints(50);
+        sorcerer.equipAxe(dark);
+        dark.getDarkDamage(sorcerer,10);
+        assertEquals(sorcerer.getCurrentHitPoints(),40);
+    }
+
+    /**
+     * Check if dealDarkDamage deals damage (and the appropriate amount of damage)
+     */
+    @Test
+    void dealDarkDamageTest(){
+
+        sorcerer.setHitPoints(50);
+
+        dark.dealDarkDamage(dark,sorcerer);
+        assertEquals(sorcerer.getCurrentHitPoints(),40);
+        dark.dealDarkDamage(light,sorcerer);
+        assertEquals(sorcerer.getCurrentHitPoints(),40);
+    }
+
 }

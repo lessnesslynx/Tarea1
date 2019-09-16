@@ -24,12 +24,12 @@ public abstract class AbstractTestItem {
   short expectedMaxRange;
 
   private Bow bow;
-  private Axe axe;
+  Axe axe;
   private Sword sword;
   private Staff staff;
-  private Spear spear;
+  Spear spear;
   Dark dark;
-  private Light light;
+  Light light;
   private Soul soul;
 
   private Field field = new Field();
@@ -45,7 +45,7 @@ public abstract class AbstractTestItem {
   }
 
   Fighter testFighter = new Fighter(50, 50, 2, field.getCell(0, 1));
-  private Sorcerer testSorcerer = new Sorcerer(50, 50, 2, field.getCell(0, 0));
+  Sorcerer testSorcerer = new Sorcerer(50, 50, 2, field.getCell(0, 0));
   private SwordMaster swordMaster = new SwordMaster(50, 50, 2, field.getCell(0, 0));
   private Hero testHero = new Hero(50, 50, 2, field.getCell(0, 0));
   private Archer testArcher = new Archer(50,50,2,field.getCell(0, 0));

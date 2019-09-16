@@ -3,6 +3,9 @@ package model.items;
 import model.map.Location;
 import model.units.IUnit;
 import model.units.SwordMaster;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test set for swords
@@ -63,5 +66,79 @@ public class SwordTest extends AbstractTestItem {
   @Override
   public IUnit getTestUnit() {
     return swordMaster;
+  }
+
+  /**
+   * Checks if Sword gets effective damage from Dark
+   */
+  @Override
+  @Test
+  public void getDarkDamageTest(){
+    swordMaster.setHitPoints(50);
+    swordMaster.equipSoul(sword);
+    sword.getDarkDamage(swordMaster,10);
+    assertEquals(swordMaster.getCurrentHitPoints(),35);
+  }
+
+  /**
+   * Checks if Sword gets effective damage from Light
+   */
+  @Override
+  @Test
+  public void getLightDamageTest(){
+    swordMaster.setHitPoints(50);
+    swordMaster.equipSoul(sword);
+    sword.getLightDamage(swordMaster,10);
+    assertEquals(swordMaster.getCurrentHitPoints(),35);
+  }
+
+  /**
+   * Checks if Sword gets effective damage from Soul
+   */
+  @Override
+  @Test
+  public void getSoulDamageTest(){
+    swordMaster.setHitPoints(50);
+    swordMaster.equipSoul(sword);
+    sword.getSoulDamage(swordMaster,10);
+    assertEquals(swordMaster.getCurrentHitPoints(),35);
+  }
+
+  /**
+   * Checks if Sword gets effective damage from Spear
+   */
+  @Override
+  @Test
+  public void getSpearDamageTest(){
+    swordMaster.setHitPoints(50);
+    swordMaster.equipSoul(sword);
+    sword.getSpearDamage(swordMaster,10);
+    assertEquals(swordMaster.getCurrentHitPoints(),35);
+  }
+
+  /**
+   * Checks if Sword gets resistant damage from Axe
+   */
+  @Override
+  @Test
+  public void getAxeDamageTest(){
+    swordMaster.setHitPoints(50);
+    swordMaster.equipSoul(sword);
+    sword.getAxeDamage(swordMaster,10);
+    assertEquals(swordMaster.getCurrentHitPoints(),50);
+  }
+
+  /**
+   * Checks combat
+   */
+  @Override
+  @Test
+  void doCombatTest(){
+    testSorcerer.equipLight(light);
+    swordMaster.equipSpear(sword);
+    testSorcerer.setHitPoints(5);
+    swordMaster.setHitPoints(5);
+    sword.doCombat(testSorcerer);
+    assertEquals(0,testSorcerer.getCurrentHitPoints());
   }
 }

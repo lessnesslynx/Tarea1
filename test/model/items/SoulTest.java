@@ -3,6 +3,9 @@ package model.items;
 import model.map.Location;
 import model.units.IUnit;
 import model.units.Sorcerer;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SoulTest extends AbstractTestItem {
 
@@ -44,4 +47,81 @@ class SoulTest extends AbstractTestItem {
         return sorcerer;
     }
 
+    /**
+     * Check if dealLightDamage deals damage (and the appropriate amount of damage)
+     */
+    @Test
+    void dealSoulDamageTest(){
+
+        sorcerer.setHitPoints(50);
+
+        soul.dealSoulDamage(dark,sorcerer);
+        assertEquals(sorcerer.getCurrentHitPoints(),50);
+        soul.dealSoulDamage(light,sorcerer);
+        assertEquals(sorcerer.getCurrentHitPoints(),35);
+    }
+
+    /**
+     * Checks if Soul gets effective damage from Sword
+     */
+    @Override
+    @Test
+    public void getSwordDamageTest(){
+        sorcerer.setHitPoints(50);
+        sorcerer.equipSoul(soul);
+        soul.getSwordDamage(sorcerer,10);
+        assertEquals(sorcerer.getCurrentHitPoints(),35);
+    }
+
+    /**
+     * Checks if Soul gets effective damage from Spear
+     */
+    @Override
+    @Test
+    public void getSpearDamageTest(){
+        sorcerer.setHitPoints(50);
+        sorcerer.equipSoul(soul);
+        soul.getSpearDamage(sorcerer,10);
+        assertEquals(sorcerer.getCurrentHitPoints(),35);
+    }
+
+    /**
+     * Checks if Soul gets effective damage from Axe
+     */
+    @Override
+    @Test
+    public void getAxeDamageTest(){
+        sorcerer.setHitPoints(50);
+        sorcerer.equipSoul(soul);
+        soul.getAxeDamage(sorcerer,10);
+        assertEquals(sorcerer.getCurrentHitPoints(),35);
+    }
+
+    /**
+     * Checks if Soul gets effective damage from Bows
+     */
+    @Override
+    @Test
+    public void getBowDamageTest(){
+        sorcerer.setHitPoints(50);
+        sorcerer.equipSoul(soul);
+        soul.getBowDamage(sorcerer,10);
+        assertEquals(sorcerer.getCurrentHitPoints(),35);
+    }
+
+    /**
+     * Checks combat
+     */
+    @Override
+    @Test
+    void doCombatTest(){
+        testSorcerer.equipLight(soul);
+        testFighter.equipSpear(axe);
+        testSorcerer.setHitPoints(5);
+        testFighter.setHitPoints(5);
+        soul.doCombat(testSorcerer);
+        assertEquals(0,testSorcerer.getCurrentHitPoints());
+    }
 }
+
+

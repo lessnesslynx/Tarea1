@@ -31,7 +31,7 @@ public class Soul extends AbstractItem {
      * @param receiverItem The equipped item of the unit who will receive damage
      * @param receiver A unit who will receive damage
      */
-    private void dealSoulDamage(IEquipableItem receiverItem, IUnit receiver){
+    void dealSoulDamage(IEquipableItem receiverItem, IUnit receiver){
         int baseDamage = this.getPower();
         receiverItem.getSoulDamage(receiver,baseDamage);
     }
@@ -97,7 +97,7 @@ public class Soul extends AbstractItem {
      * @param receiver The unit who will receive damage
      * @param baseDamage Damage without taking resistance or effectiveness into consideration yet
      */
-    public void getBowDamage(IUnit receiver, int baseDamage){
+    void getBowDamage(IUnit receiver, int baseDamage){
         receiver.getEffectiveDamage(baseDamage);
     }
 

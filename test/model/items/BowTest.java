@@ -114,4 +114,55 @@ public class BowTest extends AbstractTestItem {
     bow.getSwordDamage(archer,10);
     assertEquals(archer.getCurrentHitPoints(),40);
   }
+
+  /**
+   * Checks if Bow gets effective damage from dark
+   */
+  @Override
+  @Test
+  public void getDarkDamageTest(){
+    archer.setHitPoints(50);
+    archer.equipAxe(bow);
+    bow.getDarkDamage(archer,10);
+    assertEquals(archer.getCurrentHitPoints(),35);
+  }
+
+  /**
+   * Checks if Bow gets effective damage from light
+   */
+  @Override
+  @Test
+  public void getLightDamageTest(){
+    archer.setHitPoints(50);
+    archer.equipAxe(bow);
+    bow.getLightDamage(archer,10);
+    assertEquals(archer.getCurrentHitPoints(),35);
+  }
+
+  /**
+   * Checks if Bow gets effective damage from Soul
+   */
+  @Override
+  @Test
+  public void getSoulDamageTest(){
+    archer.setHitPoints(50);
+    archer.equipAxe(bow);
+    bow.getSoulDamage(archer,10);
+    assertEquals(archer.getCurrentHitPoints(),35);
+  }
+
+  /**
+   * Checks combat
+   */
+  @Override
+  @Test
+  void doCombatTest(){
+    testSorcerer.equipLight(light);
+    archer.equipSpear(bow);
+    testSorcerer.setHitPoints(5);
+    archer.setHitPoints(5);
+    bow.doCombat(testSorcerer);
+    assertEquals(0,testSorcerer.getCurrentHitPoints());
+  }
 }
+
