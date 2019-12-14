@@ -28,8 +28,21 @@ public class Staff extends AbstractItem {
     super(name, power, minRange, maxRange);
   }
 
-  public void performHeal(IUnit receiver){
+  /** Performs heal
+   *
+   * @param receiver Unit that gets healed
+   */
+  void performHeal(IUnit receiver){
     int power = this.getPower();
     receiver.getHeal(power);
+  }
+
+  /** Does nothing, for a cleric.
+   *
+   * @param receiver The unit that would receive damage if the cleric did damage
+   */
+  @Override
+  public void doCombat(IUnit receiver){
+
   }
 }

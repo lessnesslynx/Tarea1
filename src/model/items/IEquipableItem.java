@@ -89,6 +89,8 @@ public interface IEquipableItem {
   void getLightDamage(IUnit receiver, int baseDamage);
 
   void doCounter(IUnit target);
+
+  void doCombat(IUnit receiver);
 }
 
 

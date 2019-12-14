@@ -44,7 +44,7 @@ public class Field {
    * @param cell
    *     the location to be added
    */
-  private void addCell(final Location cell) {
+  public void addCell(final Location cell) {
     map.put(cell.toString(), cell);
   }
 
@@ -65,7 +65,7 @@ public class Field {
   /**
    * Creates a connection between 2 cells
    */
-  private void addConnection(Location cell1, Location cell2) {
+  public void addConnection(Location cell1, Location cell2) {
     cell1.addNeighbour(cell2);
   }
 
@@ -105,7 +105,7 @@ public class Field {
    *
    * @return true if the map is connected, false otherwise.
    */
-  boolean isConnected() {
+  public boolean isConnected() {
     Set<Location> visitedNodes = new HashSet<>();
     Queue<Location> toVisit = new LinkedList<>();
     toVisit.add(map.entrySet().iterator().next().getValue());
@@ -145,5 +145,35 @@ public class Field {
    */
   boolean checkConnection(final Location cell1, final Location cell2) {
     return cell1.isNeighbour(cell2);
+  }
+
+    /** Gets size (X axis) of the map
+     *
+     * @return Returns the size of the X Axis of the whole map
+     */
+  public int getSize() {
+
+    int max=Integer.MIN_VALUE;
+    int min=Integer.MAX_VALUE;
+
+    var Keys = map.keySet();
+    for(String string : Keys){
+        //String is la llave
+        Location loc = map.get(string);
+
+        int column = loc.getColumn();
+        if(column<min){
+            min = loc.getColumn();
+        }
+        if(column>max){
+            max = loc.getColumn();
+        }
+
+
+      //obtener maximo de una coordenada
+
+      //obtener minimo de una coordenada
+    }
+    return max-min;
   }
 }

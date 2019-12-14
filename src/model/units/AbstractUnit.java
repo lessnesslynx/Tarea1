@@ -20,7 +20,7 @@ import model.map.Location;
  */
 public abstract class AbstractUnit implements IUnit {
 
-  protected final List<IEquipableItem> items = new ArrayList<>();
+  public final List<IEquipableItem> items = new ArrayList<>();
   private final int maxHitPoints;
   private int currentHitPoints;
   private final int movement;
@@ -40,7 +40,7 @@ public abstract class AbstractUnit implements IUnit {
    *     maximum amount of items this unit can carry
    */
   AbstractUnit(final int maxHitPoints, int hitPoints, final int movement,
-               final Location location, final int maxItems, final IEquipableItem... items) {
+               final Location location, final int maxItems, IEquipableItem... items) {
     this.maxHitPoints = hitPoints;
     this.currentHitPoints = hitPoints;
     this.movement = movement;
@@ -92,7 +92,10 @@ public abstract class AbstractUnit implements IUnit {
   }
 
 
-
+  /** Moves unit to a destination
+   *
+   * @param targetLocation Target destination
+   */
   @Override
   public void moveTo(final Location targetLocation) {
     if (getLocation().distanceTo(targetLocation) <= getMovement()
@@ -152,19 +155,51 @@ public abstract class AbstractUnit implements IUnit {
     }
   }
 
+  /** Equips staff, only if the unit is able to equip a staff
+   *
+   * @param staff The staff to be equipped
+   */
   public void equipStaff(IEquipableItem staff){/*does nothing equips nothing*/}
 
+  /** Equips bow, if the unit is able to equip a bow
+   *
+   * @param staff The bow to be equipped
+   */
   public void equipBow(IEquipableItem staff){/*does nothing equips nothing*/}
 
+  /** Equips axe, only if the unit is able to equip an axe
+   *
+   * @param axe Axe to be equipped
+   */
   public void equipAxe(IEquipableItem axe){/*does nothing equips nothing*/}
 
+  /** Equips spear, only if the unit is able to equip a spear
+   *
+   * @param axe Spear to be equipped
+   */
   public void equipSpear(IEquipableItem axe){/*does nothing equips nothing*/}
 
+  /** Equips dark magic, only if the unit is able to equip it
+   *
+   * @param dark Dark magic to be equipped
+   */
   public void equipDark(IEquipableItem dark){/*does nothing equips nothing*/}
 
+  /** Equips light magic, only if the unit is able to equip it
+   *
+   * @param light Light magic to be equipped
+   */
   public void equipLight(IEquipableItem light){/*does nothing equips nothing*/}
 
+  /** Equips soul magic, only if the unit is able to equip it.
+   *
+   * @param soul Soul magic to be equipped
+   */
   public void equipSoul(IEquipableItem soul){/*does nothing equips nothing*/}
 
+  /** Equips sword, only if the unit is able to equip a sword
+   *
+   * @param sword Sword to be equipped
+   */
   public void equipSword(IEquipableItem sword){/*does nothing equips nothing*/}
 }

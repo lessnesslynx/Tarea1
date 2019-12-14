@@ -12,7 +12,7 @@ import model.map.Location;
  * @author Ignacio Slater Muñoz
  * @since 1.0
  */
-class Alpaca extends AbstractUnit {
+public class Alpaca extends AbstractUnit {
 
   /**
    * Creates a new Alpaca.
@@ -24,8 +24,8 @@ class Alpaca extends AbstractUnit {
    * @param location
    *     current position of the unit
    */
-  Alpaca(int hitPoints, final int maxHitPoints, final int movement, final Location location,
-         final IEquipableItem... items) {
+  public Alpaca(int hitPoints, final int maxHitPoints, final int movement, final Location location,
+                final IEquipableItem... items) {
     super(hitPoints, maxHitPoints, movement, location, Integer.MAX_VALUE, items);
   }
 

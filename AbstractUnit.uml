@@ -3,68 +3,74 @@
   <ID>JAVA</ID>
   <OriginalElement>model.units.AbstractUnit</OriginalElement>
   <nodes>
-    <node x="216.0" y="162.0">model.units.Alpaca</node>
-    <node x="439.0" y="162.0">model.units.Hero</node>
-    <node x="324.0" y="162.0">model.units.Fighter</node>
-    <node x="655.0" y="162.0">model.units.SwordMaster</node>
-    <node x="331.0" y="0.0">model.units.IUnit</node>
-    <node x="533.0" y="162.0">model.units.Sorcerer</node>
-    <node x="306.5" y="76.0">model.units.AbstractUnit</node>
-    <node x="0.0" y="162.0">model.units.Cleric</node>
-    <node x="108.0" y="162.0">model.units.Archer</node>
+    <node x="619.0" y="1171.5">model.units.Alpaca</node>
+    <node x="0.0" y="1160.0">model.units.Hero</node>
+    <node x="304.0" y="1160.0">model.units.Fighter</node>
+    <node x="1875.0" y="1160.0">model.units.SwordMaster</node>
+    <node x="932.0" y="0.0">model.units.IUnit</node>
+    <node x="1554.0" y="1138.0">model.units.Sorcerer</node>
+    <node x="907.5" y="541.0">model.units.AbstractUnit</node>
+    <node x="1246.0" y="1160.0">model.units.Cleric</node>
+    <node x="933.0" y="1160.0">model.units.Archer</node>
   </nodes>
   <notes />
   <edges>
     <edge source="model.units.AbstractUnit" target="model.units.IUnit">
-      <point x="0.0" y="-13.0" />
-      <point x="0.0" y="13.0" />
+      <point x="0.0" y="-268.5" />
+      <point x="0.0" y="245.5" />
     </edge>
     <edge source="model.units.Archer" target="model.units.AbstractUnit">
-      <point x="0.0" y="-13.0" />
-      <point x="152.0" y="132.0" />
-      <point x="334.35714285714283" y="132.0" />
-      <point x="-37.14285714285717" y="13.0" />
+      <point x="0.0" y="-36.5" />
+      <point x="0.0" y="268.5" />
     </edge>
     <edge source="model.units.SwordMaster" target="model.units.AbstractUnit">
-      <point x="0.0" y="-13.0" />
-      <point x="716.5" y="122.0" />
-      <point x="427.2142857142857" y="122.0" />
-      <point x="55.71428571428572" y="13.0" />
+      <point x="0.0" y="-36.5" />
+      <point x="2038.5" y="1098.0" />
+      <point x="1226.9285714285716" y="1098.0" />
+      <point x="147.42857142857156" y="268.5" />
     </edge>
     <edge source="model.units.Fighter" target="model.units.AbstractUnit">
-      <point x="0.0" y="-13.0" />
-      <point x="0.0" y="13.0" />
+      <point x="0.0" y="-36.5" />
+      <point x="451.5" y="1108.0" />
+      <point x="981.2142857142857" y="1108.0" />
+      <point x="-98.28571428571433" y="268.5" />
     </edge>
     <edge source="model.units.Cleric" target="model.units.AbstractUnit">
-      <point x="0.0" y="-13.0" />
-      <point x="44.0" y="122.0" />
-      <point x="315.7857142857143" y="122.0" />
-      <point x="-55.71428571428572" y="13.0" />
+      <point x="0.0" y="-36.5" />
+      <point x="1390.0" y="1118.0" />
+      <point x="1128.642857142857" y="1118.0" />
+      <point x="49.14285714285711" y="268.5" />
     </edge>
     <edge source="model.units.Hero" target="model.units.AbstractUnit">
-      <point x="0.0" y="-13.0" />
-      <point x="476.0" y="142.0" />
-      <point x="390.07142857142856" y="142.0" />
-      <point x="18.571428571428555" y="13.0" />
+      <point x="0.0" y="-36.5" />
+      <point x="142.0" y="1098.0" />
+      <point x="932.0714285714286" y="1098.0" />
+      <point x="-147.42857142857144" y="268.5" />
     </edge>
     <edge source="model.units.Sorcerer" target="model.units.AbstractUnit">
-      <point x="0.0" y="-13.0" />
-      <point x="584.0" y="132.0" />
-      <point x="408.6428571428571" y="132.0" />
-      <point x="37.14285714285711" y="13.0" />
+      <point x="0.0" y="-58.5" />
+      <point x="1704.5" y="1108.0" />
+      <point x="1177.7857142857142" y="1108.0" />
+      <point x="98.28571428571422" y="268.5" />
     </edge>
     <edge source="model.units.Alpaca" target="model.units.AbstractUnit">
-      <point x="0.0" y="-13.0" />
-      <point x="260.0" y="142.0" />
-      <point x="352.92857142857144" y="142.0" />
-      <point x="-18.571428571428555" y="13.0" />
+      <point x="0.0" y="-25.0" />
+      <point x="766.0" y="1118.0" />
+      <point x="1030.357142857143" y="1118.0" />
+      <point x="-49.14285714285711" y="268.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="390.0" y="50.0" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="1080.0" y="661.5" />
   <SelectedNodes>
-    <node>model.units.SwordMaster</node>
+    <node>model.units.Hero</node>
   </SelectedNodes>
-  <Categories />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
 </Diagram>

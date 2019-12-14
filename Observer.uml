@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>controller.Observer</OriginalElement>
+  <nodes>
+    <node x="0.0" y="0.0">controller.Observer</node>
+    <node x="0.0" y="100.0">controller.TacticianObserver</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="controller.TacticianObserver" target="controller.Observer">
+      <point x="0.0" y="-36.5" />
+      <point x="0.0" y="25.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="51.0" y="13.0" />
+  <SelectedNodes>
+    <node>controller.TacticianObserver</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
